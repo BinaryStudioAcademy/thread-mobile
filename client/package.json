@@ -1,0 +1,29 @@
+{
+  "name": "client",
+  "private": true,
+  "engines": {
+    "node": ">=16 <17",
+    "npm": ">=8 <9"
+  },
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "lint": "npm run lint:js",
+    "lint:js": "npx eslint --ext .js,jsx src"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.66.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@react-native-community/eslint-config": "2.0.0",
+    "eslint-config-airbnb": "19.0.2",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.27.1",
+    "eslint-plugin-react-native-a11y": "3.0.0",
+    "metro-react-native-babel-preset": "0.66.2"
+  }
+}
