@@ -6,5 +6,8 @@ module.exports = {
         inlineRequires: true
       }
     })
+  },
+  resolver: {
+    sourceExts: ['jsx', 'js', 'ts', 'tsx']
   }
 };
