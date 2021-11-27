@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootScreenName } from 'common/enums/enums';
-import Auth from './auth/auth.navigation';
+import { AuthFormType, RootScreenName } from 'common/enums/enums';
+import { Spinner } from 'components/components';
+import { useDispatch, useEffect, useSelector, useState } from 'hooks/hooks';
+import Auth from 'screens/auth/auth';
+import { profileActionCreator } from 'store/actions';
 import Thread from './thread/thread.navigation';
 
 const Stack = createNativeStackNavigator();
@@ -10,11 +13,39 @@ const screenOptions = {
   headerShown: false
 };
 
-const RootNavigation = () => (
-  <Stack.Navigator screenOptions={screenOptions}>
-    <Stack.Screen name={RootScreenName.AUTH} component={Auth} />
-    <Stack.Screen name={RootScreenName.THREAD} component={Thread} />
-  </Stack.Navigator>
-);
+const RootNavigation = () => {
+  const { user } = useSelector(state => ({
+    user: state.profile.user
+  }));
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const hasUser = Boolean(user);
+
+  useEffect(() => {
+    setIsLoading(true);
+    dispatch(profileActionCreator.loadCurrentUser()).finally(() => {
+      setIsLoading(false);
+    });
+  }, [dispatch]);
+
+  if (!hasUser && isLoading) {
+    return <Spinner isOverflow />;
+  }
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      {hasUser ? (
+        <Stack.Screen name={RootScreenName.THREAD} component={Thread} />
+      ) : (
+        <Stack.Screen
+          name={RootScreenName.AUTH}
+          component={Auth}
+          initialParams={{ formType: AuthFormType.LOGIN }}
+        />
+      )}
+    </Stack.Navigator>
+  );
+};
 
 export default RootNavigation;
