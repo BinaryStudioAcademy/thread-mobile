@@ -20,6 +20,8 @@ class Http {
       contentType
     });
 
+    console.log(this._getUrl(url, query));
+
     return fetch(this._getUrl(url, query), {
       method,
       headers,

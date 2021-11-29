@@ -17,7 +17,7 @@ const screenOptions = {
 };
 
 const getTabOptions = icon => ({
-  tabBarIcon: ({ color }) => <Icon name={icon} color={color} size={26} />
+  tabBarIcon: ({ color }) => <Icon name={icon} color={color} size={25} />
 });
 
 const Thread = () => (
