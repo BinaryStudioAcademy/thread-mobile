@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { IconName, ThreadScreenName } from 'common/enums/enums';
+import { IconName, AppScreenName } from 'common/enums/enums';
 import { Icon } from 'components/components';
 import AddPost from 'screens/add-post/add-post';
-import Home from 'screens/home/home';
 import Profile from 'screens/profile/profile';
+import Home from '../home/home.navigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,24 +20,24 @@ const getTabOptions = icon => ({
   tabBarIcon: ({ color }) => <Icon name={icon} color={color} size={25} />
 });
 
-const Thread = () => (
+const App = () => (
   <Tab.Navigator screenOptions={screenOptions}>
     <Tab.Screen
-      name={ThreadScreenName.HOME}
+      name={AppScreenName.HOME}
       component={Home}
       options={getTabOptions(IconName.HOME)}
     />
     <Tab.Screen
-      name={ThreadScreenName.ADD_POST}
+      name={AppScreenName.ADD_POST}
       component={AddPost}
       options={getTabOptions(IconName.PLUS_SQUARE)}
     />
     <Tab.Screen
-      name={ThreadScreenName.PROFILE}
+      name={AppScreenName.PROFILE}
       component={Profile}
       options={getTabOptions(IconName.USER)}
     />
   </Tab.Navigator>
 );
 
-export default Thread;
+export default App;

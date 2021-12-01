@@ -1,6 +1,6 @@
 const RootScreenName = {
   AUTH: 'Auth',
-  THREAD: 'Thread'
+  APP: 'App'
 };
 
 export { RootScreenName };

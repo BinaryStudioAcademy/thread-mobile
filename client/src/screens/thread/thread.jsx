@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { IconName } from 'common/enums/enums';
+import { HomeScreenName, IconName } from 'common/enums/enums';
 import { FlatList, Icon, Post, Text, View } from 'components/components';
-import { useCallback, useDispatch, useEffect, useSelector } from 'hooks/hooks';
+import {
+  useCallback,
+  useDispatch,
+  useEffect,
+  useNavigation,
+  useSelector
+} from 'hooks/hooks';
 import { threadActionCreator } from 'store/actions';
 import styles from './styles';
 
@@ -11,8 +17,9 @@ const postsFilter = {
   count: 10
 };
 
-const Home = () => {
+const ExpandedPost = () => {
   const dispatch = useDispatch();
+  const navigator = useNavigation();
   const { posts, hasMorePosts } = useSelector(state => ({
     posts: state.posts.posts,
     hasMorePosts: state.posts.hasMorePosts,
@@ -21,9 +28,18 @@ const Home = () => {
   }));
   // const [showOwnPosts, setShowOwnPosts] = useState(false);
 
-  const handlePostLike = useCallback(id => dispatch(threadActionCreator.likePost(id)), [dispatch]);
+  const handlePostLike = useCallback(
+    id => dispatch(threadActionCreator.likePost(id)),
+    [dispatch]
+  );
 
-  const handleExpandedPostToggle = useCallback(id => dispatch(threadActionCreator.toggleExpandedPost(id)), [dispatch]);
+  const handlePostExpand = useCallback(
+    id => {
+      dispatch(threadActionCreator.loadExpandedPost(id));
+      navigator.navigate(HomeScreenName.EXPANDED_POST);
+    },
+    [dispatch]
+  );
 
   // const handlePostsLoad = filtersPayload => {
   //   dispatch(threadActionCreator.loadPosts(filtersPayload));
@@ -60,30 +76,32 @@ const Home = () => {
     getMorePosts();
   }, [getMorePosts]);
 
-  const ListHeaderComponent = (
-    <>
-      <View style={styles.header}>
-        <Icon name={IconName.CAT} size={24} color="#079BE4" />
-        <Text style={styles.logoText}>Thread</Text>
-      </View>
-      <View style={styles.filter} />
-    </>
-  );
-
   return (
     <View style={styles.screen}>
       <FlatList
         data={posts}
         keyExtractor={({ id }) => id}
-        ListHeaderComponent={ListHeaderComponent}
+        ListHeaderComponent={(
+          <>
+            <View style={styles.header}>
+              <Icon name={IconName.CAT} size={24} color="#079BE4" />
+              <Text style={styles.logoText}>Thread</Text>
+            </View>
+            <View style={styles.filter} />
+          </>
+        )}
         onEndReachedThreshold={0}
         onEndReached={handleEndReached}
         renderItem={({ item: post }) => (
-          <Post post={post} onPostLike={handlePostLike} onExpandedPostToggle={handleExpandedPostToggle} />
+          <Post
+            post={post}
+            onPostLike={handlePostLike}
+            onPostExpand={handlePostExpand}
+          />
         )}
       />
     </View>
   );
 };
 
-export default Home;
+export default ExpandedPost;

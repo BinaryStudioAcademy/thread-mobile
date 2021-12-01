@@ -7,9 +7,18 @@ import { Text } from 'components/common/common';
 import styles from './styles';
 
 const Icon = ({ name, size, color, label, style, onPress }) => (
-  <TouchableOpacity activeOpacity={0.7} disabled={!onPress} style={styles.container} onPress={onPress}>
+  <TouchableOpacity
+    activeOpacity={0.7}
+    disabled={!onPress}
+    style={styles.container}
+    onPress={onPress}
+  >
     <IconUI name={name} size={size} color={color} style={style} />
-    {label && <Text style={[styles.label, { fontSize: size * 0.85, color }]}>{label}</Text>}
+    {label && (
+      <Text style={[styles.label, { fontSize: size * 0.85, color }]}>
+        {label}
+      </Text>
+    )}
   </TouchableOpacity>
 );
 

@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
   filter: {
     height: 57,
     backgroundColor: '#FAFAFA'
-  },
-  separator: {}
+  }
 });
 
 export default styles;

@@ -7,12 +7,21 @@ import { Icon, Image, Stack, Text, View } from 'components/common/common';
 import { getFromNowTime } from 'helpers/helpers';
 import styles from './styles';
 
-const Post = ({ post, onPostLike, onExpandedPostToggle }) => {
-  const { id, image, body, user, likeCount, dislikeCount, commentCount, createdAt } = post;
+const Post = ({ post, onPostLike, onPostExpand }) => {
+  const {
+    id,
+    image,
+    body,
+    user,
+    likeCount,
+    dislikeCount,
+    commentCount,
+    createdAt
+  } = post;
   const date = getFromNowTime(createdAt);
 
   const handlePostLike = () => onPostLike(id);
-  const handleExpandedPostToggle = () => onExpandedPostToggle(id);
+  const handlePostExpand = () => onPostExpand(id);
 
   return (
     <View style={styles.container}>
@@ -36,9 +45,23 @@ const Post = ({ post, onPostLike, onExpandedPostToggle }) => {
         <Text style={styles.body}>{body}</Text>
         <View style={styles.footer}>
           <Stack space={24} isRow>
-            <Icon name={IconName.THUMBS_UP} size={16} label={String(likeCount)} onPress={handlePostLike} />
-            <Icon name={IconName.THUMBS_DOWN} size={16} label={String(dislikeCount)} />
-            <Icon name={IconName.COMMENT} size={16} label={String(commentCount)} onPress={handleExpandedPostToggle} />
+            <Icon
+              name={IconName.THUMBS_UP}
+              size={16}
+              label={String(likeCount)}
+              onPress={handlePostLike}
+            />
+            <Icon
+              name={IconName.THUMBS_DOWN}
+              size={16}
+              label={String(dislikeCount)}
+            />
+            <Icon
+              name={IconName.COMMENT}
+              size={16}
+              label={String(commentCount)}
+              onPress={onPostExpand ? handlePostExpand : null}
+            />
           </Stack>
           <Icon name={IconName.SHARE_ALT} size={16} />
         </View>
@@ -50,7 +73,11 @@ const Post = ({ post, onPostLike, onExpandedPostToggle }) => {
 Post.propTypes = {
   post: postType.isRequired,
   onPostLike: PropTypes.func.isRequired,
-  onExpandedPostToggle: PropTypes.func.isRequired
+  onPostExpand: PropTypes.func
+};
+
+Post.defaultProps = {
+  onPostExpand: null
 };
 
 export default Post;

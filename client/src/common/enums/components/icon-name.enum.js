@@ -4,6 +4,7 @@ const IconName = {
   ENVELOPE: 'envelope',
   HOME: 'home',
   LOCK: 'lock',
+  PAPER_PLANE: 'paper-plane',
   PLUS_SQUARE: 'plus-square',
   SHARE_ALT: 'share-alt',
   THUMBS_UP: 'thumbs-up',

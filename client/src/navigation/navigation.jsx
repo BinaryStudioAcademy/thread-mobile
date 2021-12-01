@@ -5,7 +5,7 @@ import { Spinner } from 'components/components';
 import { useDispatch, useEffect, useSelector, useState } from 'hooks/hooks';
 import Auth from 'screens/auth/auth';
 import { profileActionCreator } from 'store/actions';
-import Thread from './thread/thread.navigation';
+import App from './app/app.navigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +36,7 @@ const RootNavigation = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       {hasUser ? (
-        <Stack.Screen name={RootScreenName.THREAD} component={Thread} />
+        <Stack.Screen name={RootScreenName.APP} component={App} />
       ) : (
         <Stack.Screen
           name={RootScreenName.AUTH}

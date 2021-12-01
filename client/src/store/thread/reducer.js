@@ -23,24 +23,33 @@ const reducer = createReducer(initialState, builder => {
     state.posts = state.posts.concat(posts);
     state.hasMorePosts = Boolean(posts.length);
   });
-  builder.addCase(threadActions.toggleExpandedPost.fulfilled, (state, action) => {
+  builder.addCase(threadActions.loadExpandedPost.fulfilled, (state, action) => {
     const { post } = action.payload;
 
     state.expandedPost = post;
   });
-  builder.addMatcher(isAnyOf(threadActions.likePost.fulfilled, threadActions.addComment.fulfilled), (state, action) => {
-    const { posts, expandedPost } = action.payload;
-    state.posts = posts;
-    state.expandedPost = expandedPost;
-  });
-  builder.addMatcher(isAnyOf(
-    threadActions.applyPost.fulfilled,
-    threadActions.createPost.fulfilled
-  ), (state, action) => {
-    const { post } = action.payload;
+  builder.addMatcher(
+    isAnyOf(
+      threadActions.likePost.fulfilled,
+      threadActions.addComment.fulfilled
+    ),
+    (state, action) => {
+      const { posts, expandedPost } = action.payload;
+      state.posts = posts;
+      state.expandedPost = expandedPost;
+    }
+  );
+  builder.addMatcher(
+    isAnyOf(
+      threadActions.applyPost.fulfilled,
+      threadActions.createPost.fulfilled
+    ),
+    (state, action) => {
+      const { post } = action.payload;
 
-    state.posts = [post, ...state.posts];
-  });
+      state.posts = [post, ...state.posts];
+    }
+  );
 });
 
 export { reducer };
