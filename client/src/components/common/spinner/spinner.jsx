@@ -4,23 +4,27 @@ import { ActivityIndicator } from 'react-native';
 import { View } from 'components/common/common';
 import styles from './styles';
 
-const Spinner = ({ isOverflow }) => {
+const Spinner = ({ size, color, isOverflow }) => {
   if (isOverflow) {
     return (
       <View style={styles.overflowContainer}>
-        <ActivityIndicator size={45} color="#33BBFF" />
+        <ActivityIndicator size={size ?? 45} color={color} />
       </View>
     );
   }
 
-  return <ActivityIndicator size={30} color="#33BBFF" />;
+  return <ActivityIndicator size={size ?? 30} color={color} />;
 };
 
 Spinner.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
   isOverflow: PropTypes.bool
 };
 
 Spinner.defaultProps = {
+  size: null,
+  color: '#33BBFF',
   isOverflow: false
 };
 

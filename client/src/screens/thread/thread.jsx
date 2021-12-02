@@ -52,13 +52,13 @@ const ExpandedPost = () => {
     [dispatch]
   );
 
-  // const toggleShowOwnPosts = () => {
-  //   setShowOwnPosts(!showOwnPosts);
-  //   postsFilter.userId = showOwnPosts ? undefined : userId;
-  //   postsFilter.from = 0;
-  //   handlePostsLoad({ ...postsFilter });
-  //   postsFilter.from = postsFilter.count; // for the next scroll
-  // };
+  /* const toggleShowOwnPosts = () => {
+    setShowOwnPosts(!showOwnPosts);
+    postsFilter.userId = showOwnPosts ? undefined : userId;
+    postsFilter.from = 0;
+    handlePostsLoad({ ...postsFilter });
+    postsFilter.from = postsFilter.count; // for the next scroll
+  };*/
 
   const getMorePosts = useCallback(() => {
     handleMorePostsLoad({ ...postsFilter });
