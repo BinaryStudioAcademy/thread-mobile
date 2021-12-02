@@ -39,7 +39,7 @@ const Post = ({ post, onPostLike, onPostExpand }) => {
           <Image
             style={styles.image}
             accessibilityIgnoresInvertColors
-            source={{ uri: image.link ?? DEFAULT_USER_AVATAR }}
+            source={{ uri: image.link }}
           />
         )}
         <Text style={styles.body}>{body}</Text>

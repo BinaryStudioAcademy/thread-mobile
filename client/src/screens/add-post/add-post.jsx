@@ -15,7 +15,7 @@ const AddPost = () => {
   const [image, setImage] = useState(undefined);
   const [isUploading, setIsUploading] = useState(false);
 
-  const handleAddPost = async () => {
+  const handleAddPost = () => {
     if (!body) {
       return;
     }

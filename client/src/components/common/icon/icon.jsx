@@ -10,10 +10,10 @@ const Icon = ({ name, size, color, label, style, onPress }) => (
   <TouchableOpacity
     activeOpacity={0.7}
     disabled={!onPress}
-    style={styles.container}
+    style={[styles.container, style]}
     onPress={onPress}
   >
-    <IconUI name={name} size={size} color={color} style={style} />
+    <IconUI name={name} size={size} color={color} />
     {label && (
       <Text style={[styles.label, { fontSize: size * 0.85, color }]}>
         {label}

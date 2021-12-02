@@ -4,13 +4,13 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     borderRadius: 5,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    backgroundColor: '#F5F5F5'
   },
   input: {
     padding: 10,
     fontSize: 16,
-    color: '#02324B',
-    backgroundColor: '#F5F5F5'
+    color: '#02324B'
   },
   icon: {
     position: 'absolute',
