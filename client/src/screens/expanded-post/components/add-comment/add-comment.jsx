@@ -6,14 +6,14 @@ import { Icon, View } from 'components/common/common';
 import { useState } from 'hooks/hooks';
 import styles from './styles';
 
-const AddComment = ({ onCommentAdd }) => {
+const AddComment = ({ postId, onCommentAdd }) => {
   const [body, setBody] = useState('');
 
   const handleAddComment = async () => {
     if (!body) {
       return;
     }
-    await onCommentAdd(body);
+    await onCommentAdd({ body, postId });
     setBody('');
   };
 
@@ -36,6 +36,7 @@ const AddComment = ({ onCommentAdd }) => {
 };
 
 AddComment.propTypes = {
+  postId: PropTypes.number.isRequired,
   onCommentAdd: PropTypes.func.isRequired
 };
 

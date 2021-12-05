@@ -21,10 +21,7 @@ const ExpandedPost = () => {
   );
 
   const handleCommentAdd = useCallback(
-    commentBody => {
-      const commentPayload = { body: commentBody, postId: post.id };
-      dispatch(threadActionCreator.addComment(commentPayload));
-    },
+    commentPayload => dispatch(threadActionCreator.addComment(commentPayload)),
     [dispatch]
   );
 
@@ -40,7 +37,7 @@ const ExpandedPost = () => {
         ListHeaderComponent={(
           <>
             <Post post={post} onPostLike={handlePostLike} />
-            <AddComment onCommentAdd={handleCommentAdd} />
+            <AddComment postId={post.id} onCommentAdd={handleCommentAdd} />
           </>
         )}
         renderItem={({ item: comment }) => <Comment comment={comment} />}

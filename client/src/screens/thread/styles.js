@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     color: '#079BE4'
   },
   filter: {
-    height: 57,
+    padding: 15,
     backgroundColor: '#FAFAFA'
   }
 });
