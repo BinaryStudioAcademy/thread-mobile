@@ -8,6 +8,7 @@ import {
   Text,
   View
 } from 'components/components';
+import { sharePost } from 'helpers/helpers';
 import {
   useCallback,
   useDispatch,
@@ -47,6 +48,12 @@ const ExpandedPost = () => {
     },
     [dispatch]
   );
+
+  const handlePostShare = useCallback(({ body, image }) => {
+    sharePost({ body, image }).catch(() => {
+      // TODO: show error
+    });
+  }, []);
 
   const handlePostsLoad = filtersPayload => {
     dispatch(threadActionCreator.loadPosts(filtersPayload));
@@ -109,6 +116,7 @@ const ExpandedPost = () => {
           <Post
             post={post}
             onPostLike={handlePostLike}
+            onPostShare={handlePostShare}
             onPostExpand={handlePostExpand}
           />
         )}

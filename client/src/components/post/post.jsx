@@ -7,7 +7,7 @@ import { Icon, Image, Stack, Text, View } from 'components/common/common';
 import { getFromNowTime } from 'helpers/helpers';
 import styles from './styles';
 
-const Post = ({ post, onPostLike, onPostExpand }) => {
+const Post = ({ post, onPostLike, onPostShare, onPostExpand }) => {
   const {
     id,
     image,
@@ -22,6 +22,7 @@ const Post = ({ post, onPostLike, onPostExpand }) => {
 
   const handlePostLike = () => onPostLike(id);
   const handlePostExpand = () => onPostExpand(id);
+  const handlePostShare = () => onPostShare({ body, image });
 
   return (
     <View style={styles.container}>
@@ -63,7 +64,7 @@ const Post = ({ post, onPostLike, onPostExpand }) => {
               onPress={onPostExpand ? handlePostExpand : null}
             />
           </Stack>
-          <Icon name={IconName.SHARE_ALT} size={16} />
+          <Icon name={IconName.SHARE_ALT} size={16} onPress={handlePostShare} />
         </View>
       </View>
     </View>
@@ -73,6 +74,7 @@ const Post = ({ post, onPostLike, onPostExpand }) => {
 Post.propTypes = {
   post: postType.isRequired,
   onPostLike: PropTypes.func.isRequired,
+  onPostShare: PropTypes.func.isRequired,
   onPostExpand: PropTypes.func
 };
 
