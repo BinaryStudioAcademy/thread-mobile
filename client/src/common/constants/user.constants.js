@@ -1,3 +1,3 @@
-const DEFAULT_USER_AVATAR = 'https://i.gyazo.com/8c1c68ec8a8bd13ee6798fa03c990985.png';
+const DEFAULT_USER_AVATAR = 'https://i.gyazo.com/84897f3b49924fd53b4aeb8b2d1f91c7.png';
 
 export { DEFAULT_USER_AVATAR };

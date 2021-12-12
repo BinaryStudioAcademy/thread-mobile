@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { AppColor } from 'config/config';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 15,
-    backgroundColor: '#FAFAFA',
     borderBottomWidth: 1,
-    borderBottomColor: '#F0F0F0'
+    borderBottomColor: AppColor.BORDER
   },
   avatar: {
     width: 40,
@@ -17,13 +17,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10
   },
-  username: {
-    color: '#03557F',
-    fontWeight: '600'
-  },
-  date: {
-    fontSize: 14,
-    color: '#B9C2C6'
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   body: {
     fontSize: 14

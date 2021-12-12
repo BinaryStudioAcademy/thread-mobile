@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TextInput } from 'react-native';
 import { IconName } from 'common/enums/enums';
 import { Icon, View } from 'components/common/common';
+import { AppColor } from 'config/config';
 import styles from './styles';
 
 const Input = ({
@@ -18,16 +19,16 @@ const Input = ({
       value={value}
       editable={!isDisabled}
       placeholder={placeholder}
-      placeholderTextColor="#B6BFC3"
+      placeholderTextColor={AppColor.PLACEHOLDER}
       secureTextEntry={isSecure}
       style={[
         styles.input,
         icon ? { paddingLeft: 50 } : {},
-        { opacity: isDisabled ? 0.6 : 1 }
+        { opacity: isDisabled ? 0.5 : 1 }
       ]}
       onChangeText={setValue}
     />
-    {icon && <Icon name={icon} size={20} color="#B6BFC3" style={styles.icon} />}
+    {icon && <Icon name={icon} size={20} style={styles.icon} />}
   </View>
 );
 

@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { HomeScreenName, IconName } from 'common/enums/enums';
+import {
+  HomeScreenName,
+  IconName,
+  NotificationMessage,
+  TextVariant
+} from 'common/enums/enums';
+import { AppColor } from 'config/config';
 import {
   FlatList,
   Icon,
-  Post,
+  SafeAreaView,
   Switch,
   Text,
   View
-} from 'components/components';
+} from 'components/common/common';
+import { Post } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import {
   useCallback,
@@ -18,6 +25,7 @@ import {
   useState
 } from 'hooks/hooks';
 import { threadActionCreator } from 'store/actions';
+import { notification as notificationService } from 'services/services';
 import styles from './styles';
 
 const postsFilter = {
@@ -51,7 +59,7 @@ const ExpandedPost = () => {
 
   const handlePostShare = useCallback(({ body, image }) => {
     sharePost({ body, image }).catch(() => {
-      // TODO: show error
+      notificationService.error(NotificationMessage.OPERATION_FAILED);
     });
   }, []);
 
@@ -91,20 +99,23 @@ const ExpandedPost = () => {
   }, [getMorePosts]);
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView>
       <FlatList
+        bounces={false}
         data={posts}
         keyExtractor={({ id }) => id}
         ListHeaderComponent={(
           <>
             <View style={styles.header}>
-              <Icon name={IconName.CAT} size={24} color="#079BE4" />
-              <Text style={styles.logoText}>Thread</Text>
+              <Icon name={IconName.CAT} size={24} color={AppColor.HEADLINE} />
+              <Text variant={TextVariant.HEADLINE} style={styles.logoText}>
+                Thread
+              </Text>
             </View>
             <View style={styles.filter}>
               <Switch
                 value={showOwnPosts}
-                label="show only my posts"
+                label="Show only my posts"
                 onToggleValue={toggleShowOwnPosts}
               />
             </View>
@@ -121,7 +132,7 @@ const ExpandedPost = () => {
           />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

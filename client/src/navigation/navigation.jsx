@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthFormType, RootScreenName } from 'common/enums/enums';
-import { Spinner } from 'components/components';
+import { Spinner } from 'components/common/common';
 import { useDispatch, useEffect, useSelector, useState } from 'hooks/hooks';
 import Auth from 'screens/auth/auth';
 import { profileActionCreator } from 'store/actions';

@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, ViewPropTypes } from 'react-native';
 import IconUI from 'react-native-vector-icons/FontAwesome5';
+import { AppColor } from 'config/config';
 import { IconName } from 'common/enums/enums';
 import { Text } from 'components/common/common';
 import styles from './styles';
@@ -13,7 +14,7 @@ const Icon = ({ name, size, color, label, style, onPress }) => (
     style={[styles.container, style]}
     onPress={onPress}
   >
-    <IconUI name={name} size={size} color={color} />
+    <IconUI name={name} size={size} color={color} solid />
     {label && (
       <Text style={[styles.label, { fontSize: size * 0.85, color }]}>
         {label}
@@ -33,7 +34,7 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   size: 20,
-  color: '#B6BFC3',
+  color: AppColor.ICON,
   label: null,
   style: null,
   onPress: null

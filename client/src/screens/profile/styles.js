@@ -2,11 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    padding: 15,
-    paddingTop: 60,
     alignItems: 'center',
-    backgroundColor: '#fff'
+    padding: 15,
+    paddingTop: 60
   },
   content: {
     minWidth: 240
@@ -16,9 +14,6 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     borderRadius: 125
-  },
-  stack: {
-    marginBottom: 30
   }
 });
 

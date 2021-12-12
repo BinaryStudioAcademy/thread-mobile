@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TextVariant } from 'common/enums/enums';
 import { DEFAULT_USER_AVATAR } from 'common/constants/constants';
 import { commentType } from 'common/prop-types/prop-types';
 import { Image, Text, View } from 'components/common/common';
@@ -13,10 +14,15 @@ const Comment = ({ comment: { body, createdAt, user } }) => (
       source={{ uri: user.image?.link ?? DEFAULT_USER_AVATAR }}
     />
     <View style={styles.content}>
-      <Text>
-        <Text style={styles.username}>{user.username}</Text>
-        <Text style={styles.date}>{` • ${getFromNowTime(createdAt)}`}</Text>
-      </Text>
+      <View style={styles.header}>
+        <Text variant={TextVariant.TITLE}>{user.username}</Text>
+        <Text variant={TextVariant.SUBTITLE}>
+          {' '}
+          •
+          {' '}
+          {getFromNowTime(createdAt)}
+        </Text>
+      </View>
       <Text style={styles.body}>{body}</Text>
     </View>
   </View>

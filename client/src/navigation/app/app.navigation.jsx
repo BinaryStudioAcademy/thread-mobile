@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { IconName, AppScreenName } from 'common/enums/enums';
-import { Icon } from 'components/components';
+import { Icon } from 'components/common/common';
+import { AppColor } from 'config/config';
 import AddPost from 'screens/add-post/add-post';
 import Profile from 'screens/profile/profile';
 import Home from '../home/home.navigation';
@@ -9,15 +10,22 @@ import Home from '../home/home.navigation';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
+  animationEnabled: true,
   headerShown: false,
   tabBarShowLabel: false,
-  tabBarActiveTintColor: '#33BBFF',
-  tabBarInactiveTintColor: '#D6D6D6',
+  tabBarInactiveTintColor: AppColor.ICON,
   tabBarStyle: { minHeight: 60 }
 };
 
 const getTabOptions = icon => ({
-  tabBarIcon: ({ color }) => <Icon name={icon} color={color} size={25} />
+  tabBarIcon: ({ focused, color }) => (
+    <Icon
+      name={icon}
+      color={color}
+      size={25}
+      style={{ opacity: focused ? 1 : 0.7 }}
+    />
+  )
 });
 
 const App = () => (

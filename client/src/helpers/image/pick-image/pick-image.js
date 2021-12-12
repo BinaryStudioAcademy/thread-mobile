@@ -1,3 +1,7 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 
-export const pickImage = () => launchImageLibrary({ mediaType: 'image' }).then(res => res.assets[0]);
+export const pickImage = async () => {
+  const res = await launchImageLibrary({ mediaType: 'image' });
+
+  return res.assets ? res.assets[0] : null;
+};

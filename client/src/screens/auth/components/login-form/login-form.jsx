@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { AuthFormType, IconName } from 'common/enums/enums';
+import { AuthFormType, IconName, TextVariant } from 'common/enums/enums';
 import { useNavigation, useState } from 'hooks/hooks';
-import { Button, Input, Stack, Text, View } from 'components/components';
+import { Button, Input, Stack, Text, View } from 'components/common/common';
 import styles from './styles';
 
 const LoginForm = ({ onLogin }) => {
@@ -17,10 +17,9 @@ const LoginForm = ({ onLogin }) => {
     }
     setIsLoading(true);
 
-    onLogin({ email, password }).catch(() => {
-      // TODO: show error
-      setIsLoading(false);
-    });
+    onLogin({ email, password })
+      .unwrap()
+      .catch(() => setIsLoading(false));
   };
 
   const handleSignUpPress = () => {
@@ -36,6 +35,7 @@ const LoginForm = ({ onLogin }) => {
           value={email}
           icon={IconName.ENVELOPE}
           placeholder="johndoe@mail.com"
+          isDisabled={isLoading}
           setValue={setEmail}
         />
         <Input
@@ -43,16 +43,21 @@ const LoginForm = ({ onLogin }) => {
           icon={IconName.LOCK}
           placeholder="password"
           isSecure
+          isDisabled={isLoading}
           setValue={setPassword}
         />
-        <Button title="Login" onPress={handleLoginPress} />
+        <Button
+          title="Login"
+          isLoading={isLoading}
+          onPress={handleLoginPress}
+        />
       </Stack>
-      <Text style={styles.message}>
-        {'Don’t have an account? '}
-        <Text style={styles.link} onPress={handleSignUpPress}>
+      <View style={styles.message}>
+        <Text>Don’t have an account? </Text>
+        <Text variant={TextVariant.LINK} onPress={handleSignUpPress}>
           Sign up
         </Text>
-      </Text>
+      </View>
     </View>
   );
 };

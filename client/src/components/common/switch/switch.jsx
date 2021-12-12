@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Switch as UISwitch } from 'react-native';
 import PropTypes from 'prop-types';
+import { HUE } from 'common/constants/constants';
 import { Text, View } from 'components/common/common';
+import { AppColor } from 'config/config';
 import styles from './styles';
 
 const Switch = ({ value, label, onToggleValue }) => (
@@ -9,8 +11,13 @@ const Switch = ({ value, label, onToggleValue }) => (
     <Text style={styles.label}>{label}</Text>
     <UISwitch
       value={value}
-      trackColor={{ false: '#a5a5a5', true: '#BDE9FF' }}
-      thumbColor={value ? '#33BBFF' : '#e6e6e6'}
+      style={styles.switch}
+      ios_backgroundColor={`hsl(${HUE}, 10%, 70%)`}
+      trackColor={{
+        false: `hsl(${HUE}, 10%, 65%)`,
+        true: AppColor.PRIMARY_LIGHT
+      }}
+      thumbColor={value ? AppColor.PRIMARY : `hsl(${HUE}, 10%, 85%)`}
       onValueChange={onToggleValue}
     />
   </View>
@@ -18,12 +25,8 @@ const Switch = ({ value, label, onToggleValue }) => (
 
 Switch.propTypes = {
   value: PropTypes.bool.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   onToggleValue: PropTypes.func.isRequired
-};
-
-Switch.defaultProps = {
-  label: ''
 };
 
 export default Switch;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { DEFAULT_USER_AVATAR } from 'common/constants/constants';
-import { IconName } from 'common/enums/enums';
+import { IconName, TextVariant } from 'common/enums/enums';
 import { postType } from 'common/prop-types/prop-types';
 import { Icon, Image, Stack, Text, View } from 'components/common/common';
 import { getFromNowTime } from 'helpers/helpers';
@@ -32,10 +32,14 @@ const Post = ({ post, onPostLike, onPostShare, onPostExpand }) => {
         source={{ uri: user.image?.link ?? DEFAULT_USER_AVATAR }}
       />
       <View style={styles.content}>
-        <Text>
-          <Text style={styles.username}>{user.username}</Text>
-          <Text style={styles.date}>{` • ${date}`}</Text>
-        </Text>
+        <View style={styles.header}>
+          <Text variant={TextVariant.TITLE}>{user.username}</Text>
+          <Text variant={TextVariant.SUBTITLE}>
+            {' '}
+            •
+            {date}
+          </Text>
+        </View>
         {image && (
           <Image
             style={styles.image}

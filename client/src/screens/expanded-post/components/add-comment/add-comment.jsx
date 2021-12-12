@@ -3,6 +3,7 @@ import { TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { IconName } from 'common/enums/enums';
 import { Icon, View } from 'components/common/common';
+import { AppColor } from 'config/config';
 import { useState } from 'hooks/hooks';
 import styles from './styles';
 
@@ -21,14 +22,15 @@ const AddComment = ({ postId, onCommentAdd }) => {
     <View style={styles.container}>
       <TextInput
         value={body}
-        placeholder="Type here..."
+        placeholder="Type your comment..."
+        placeholderTextColor={AppColor.PLACEHOLDER}
         style={styles.input}
         onChangeText={setBody}
       />
       <Icon
         name={IconName.PAPER_PLANE}
         size={22}
-        color={body ? '#33BBFF' : '#B6BFC3'}
+        color={body ? AppColor.PRIMARY : AppColor.ICON}
         onPress={body ? handleAddComment : null}
       />
     </View>

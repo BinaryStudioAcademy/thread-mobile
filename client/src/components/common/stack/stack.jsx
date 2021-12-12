@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'components/common/common';
 
-const Stack = ({ children, space, isRow, style }) => {
+const Stack = ({ children, space, isRow }) => {
   const separatorStyle = {
     marginBottom: isRow ? 0 : space,
     marginLeft: isRow ? space : 0
@@ -14,7 +13,7 @@ const Stack = ({ children, space, isRow, style }) => {
   }
 
   return (
-    <View style={[{ flexDirection: isRow ? 'row' : 'column' }, style]}>
+    <View style={{ flexDirection: isRow ? 'row' : 'column' }}>
       {children.map((child, index) => (
         <React.Fragment key={child.key ?? index}>
           {child}
@@ -28,14 +27,12 @@ const Stack = ({ children, space, isRow, style }) => {
 Stack.propTypes = {
   children: PropTypes.node,
   space: PropTypes.number.isRequired,
-  isRow: PropTypes.bool,
-  style: ViewPropTypes.style
+  isRow: PropTypes.bool
 };
 
 Stack.defaultProps = {
   children: null,
-  isRow: false,
-  style: null
+  isRow: false
 };
 
 export default Stack;

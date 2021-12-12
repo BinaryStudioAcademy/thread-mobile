@@ -37,8 +37,15 @@ const logout = createAsyncThunk(
 
 const loadCurrentUser = createAsyncThunk(
   ActionType.LOG_IN,
-  async (_request, { dispatch, rejectWithValue, extra: { services } }) => {
+  async (
+    _request,
+    { dispatch, rejectWithValue, fulfillWithValue, extra: { services } }
+  ) => {
     try {
+      const token = await services.storage.getItem(StorageKey.TOKEN);
+      if (!token) {
+        return fulfillWithValue(null);
+      }
       return await services.auth.getCurrentUser();
     } catch (err) {
       const isHttpError = err instanceof HttpError;

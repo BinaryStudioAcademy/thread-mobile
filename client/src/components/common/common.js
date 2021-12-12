@@ -1,4 +1,4 @@
-import { FlatList, Image, View } from 'react-native';
+import { FlatList, Image, SafeAreaView, View } from 'react-native';
 import Button from './button/button';
 import Icon from './icon/icon';
 import Input from './input/input';
@@ -11,6 +11,7 @@ export {
   FlatList,
   Image,
   Switch,
+  SafeAreaView,
   View,
   Button,
   Icon,

@@ -1,11 +1,14 @@
 import { StyleSheet } from 'react-native';
+import { AppColor } from 'config/config';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingHorizontal: 15,
-    paddingTop: 10,
-    paddingBottom: 20
+    paddingTop: 13,
+    paddingBottom: 25,
+    borderBottomWidth: 1,
+    borderColor: AppColor.BORDER
   },
   input: {
     flex: 1,
@@ -13,9 +16,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     marginRight: 10,
     fontSize: 16,
-    color: '#02324B',
+    color: AppColor.TEXT,
     borderBottomWidth: 1,
-    borderBottomColor: '#D6D6D6'
+    borderColor: AppColor.PRIMARY
   }
 });
 

@@ -3,24 +3,21 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingHorizontal: 15,
-    paddingTop: 30,
-    paddingBottom: 60,
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 330,
+    paddingTop: 20,
+    paddingBottom: 60,
+    paddingHorizontal: 15
   },
   logoWrapper: {
-    marginBottom: 60,
+    marginBottom: 40,
     alignItems: 'center'
   },
   logo: {
     width: 120,
     height: 120
-  },
-  logoText: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#079BE4'
   }
 });
 

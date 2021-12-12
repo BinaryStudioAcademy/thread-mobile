@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { AppColor } from 'config/config';
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: '#fff'
+  header: {
+    backgroundColor: AppColor.BACKGROUND
+  },
+  container: {
+    minHeight: '100%',
+    backgroundColor: AppColor.BACKGROUND_DARK
   }
 });
 

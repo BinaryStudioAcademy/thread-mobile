@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { ActivityIndicator } from 'react-native';
 import { View } from 'components/common/common';
+import { AppColor } from 'config/config';
 import styles from './styles';
 
 const Spinner = ({ size, color, isOverflow }) => {
@@ -24,7 +25,7 @@ Spinner.propTypes = {
 
 Spinner.defaultProps = {
   size: null,
-  color: '#33BBFF',
+  color: AppColor.PRIMARY,
   isOverflow: false
 };
 

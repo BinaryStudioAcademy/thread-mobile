@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { FlatList, Post, Spinner, View } from 'components/components';
+import { NotificationMessage } from 'common/enums/enums';
+import { FlatList, SafeAreaView, Spinner } from 'components/common/common';
+import { Post } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import { useCallback, useDispatch, useSelector } from 'hooks/hooks';
+import { notification as notificationService } from 'services/services';
 import { threadActionCreator } from 'store/actions';
 import { AddComment, Comment } from './components/components';
 import { getSortedComments } from './helpers/helpers';
@@ -28,7 +31,7 @@ const ExpandedPost = () => {
 
   const handlePostShare = useCallback(({ body, image }) => {
     sharePost({ body, image }).catch(() => {
-      // TODO: show error
+      notificationService.error(NotificationMessage.OPERATION_FAILED);
     });
   }, []);
 
@@ -37,10 +40,12 @@ const ExpandedPost = () => {
   }
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView>
       <FlatList
         data={sortedComments}
         keyExtractor={({ id }) => id}
+        ListHeaderComponentStyle={styles.header}
+        contentContainerStyle={styles.container}
         ListHeaderComponent={(
           <>
             <Post
@@ -53,7 +58,7 @@ const ExpandedPost = () => {
         )}
         renderItem={({ item: comment }) => <Comment comment={comment} />}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

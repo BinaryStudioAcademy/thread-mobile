@@ -1,4 +1,10 @@
 apply plugin: "com.android.application"
+
+project.ext.envConfigFiles = [
+  debug: '.env.android',
+  release: '.env.android',
+]
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 project.ext.vectoricons = [

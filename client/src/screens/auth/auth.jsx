@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCallback, useDispatch, useRoute } from 'hooks/hooks';
-import { AuthFormType } from 'common/enums/enums';
-import { Image, Text, View } from 'components/components';
+import { AuthFormType, TextVariant } from 'common/enums/enums';
+import { Image, Text, View } from 'components/common/common';
 import { profileActionCreator } from 'store/actions';
 import { LoginForm, RegistrationForm } from './components/components';
 import styles from './styles';
@@ -46,7 +46,7 @@ const Auth = () => {
             uri: 'https://s1.iconbird.com/ico/2013/8/428/w256h2561377930292cattied.png'
           }}
         />
-        <Text style={styles.logoText}>Thread</Text>
+        <Text variant={TextVariant.HEADLINE}>Thread</Text>
       </View>
       {getForm(formType)}
     </View>

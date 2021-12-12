@@ -1,13 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: 5,
+    overflow: 'hidden'
+  },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 5
+    minHeight: 40
   },
   title: {
     fontWeight: '600'

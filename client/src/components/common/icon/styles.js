@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     padding: 2
   },
   label: {
-    marginLeft: 5
+    marginLeft: 5,
+    fontWeight: '600'
   }
 });
 

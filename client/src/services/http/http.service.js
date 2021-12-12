@@ -63,7 +63,7 @@ class Http {
   }
 
   _getUrl(url, query) {
-    return `${ENV.API_URL}${url}${
+    return `${ENV.API_BASE}${url}${
       query ? `?${getStringifiedQuery(query)}` : ''
     }`;
   }

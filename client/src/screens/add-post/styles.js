@@ -1,23 +1,17 @@
 import { StyleSheet } from 'react-native';
+import { AppColor } from 'config/config';
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    padding: 15,
-    backgroundColor: '#fff'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#079AE4',
-    paddingBottom: 15
+    padding: 15
   },
   input: {
     height: 200,
     padding: 10,
+    marginTop: 15,
     fontSize: 16,
-    color: '#02324B',
-    backgroundColor: '#F4F4F4',
+    color: AppColor.TEXT,
+    backgroundColor: AppColor.INPUT,
     textAlignVertical: 'top',
     borderRadius: 5
   },
