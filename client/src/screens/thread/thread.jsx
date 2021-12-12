@@ -40,7 +40,7 @@ const ExpandedPost = () => {
   const { posts, hasMorePosts, userId } = useSelector(state => ({
     posts: state.posts.posts,
     hasMorePosts: state.posts.hasMorePosts,
-    userId: state.profile.user.id
+    userId: state.profile.user?.id
   }));
   const [showOwnPosts, setShowOwnPosts] = useState(false);
 

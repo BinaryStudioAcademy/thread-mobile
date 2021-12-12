@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { AppColor } from 'config/config';
 
 const styles = StyleSheet.create({
-  container: {
+  inputWrapper: {
     justifyContent: 'center',
     borderRadius: 5,
     overflow: 'hidden',
@@ -16,6 +16,15 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 10
+  },
+  error: {
+    flexDirection: 'row',
+    marginTop: 3
+  },
+  errorMessage: {
+    fontSize: 14,
+    color: AppColor.ERROR,
+    marginLeft: 5
   }
 });
 

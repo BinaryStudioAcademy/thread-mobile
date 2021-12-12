@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createStackNavigator,
+  TransitionPresets
+} from '@react-navigation/stack';
 import { HomeScreenName } from 'common/enums/enums';
 import Thread from 'screens/thread/thread';
 import ExpandedPost from 'screens/expanded-post/expanded-post';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const screenOptions = {
-  headerShown: false
+  headerShown: false,
+  ...TransitionPresets.ScaleFromCenterAndroid
 };
 
 const Home = () => (

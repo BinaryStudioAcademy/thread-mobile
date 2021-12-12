@@ -1,5 +1,6 @@
 import Toast from 'react-native-toast-message';
 import { NotificationType } from 'common/enums/enums';
+import { TOP_OFFSET } from './constants';
 
 class Notification {
   info(message) {
@@ -11,7 +12,7 @@ class Notification {
   }
 
   _show({ type, message: text1 }) {
-    Toast.show({ type, text1 });
+    Toast.show({ type, text1, topOffset: TOP_OFFSET });
   }
 }
 

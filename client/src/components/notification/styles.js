@@ -13,7 +13,13 @@ const styles = StyleSheet.create({
     borderLeftWidth: 5,
     backgroundColor: AppColor.BACKGROUND_DARK,
     opacity: 0.9,
-    elevation: 3
+    elevation: 3,
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3
   },
   content: {
     marginLeft: 20

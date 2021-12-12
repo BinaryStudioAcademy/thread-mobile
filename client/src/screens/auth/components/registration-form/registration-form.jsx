@@ -1,23 +1,36 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { useFormik } from 'formik';
 import { AuthFormType, IconName, TextVariant } from 'common/enums/enums';
-import { useNavigation, useState } from 'hooks/hooks';
 import { Button, Input, Stack, Text, View } from 'components/common/common';
+import { useNavigation, useState } from 'hooks/hooks';
+import { registration as registrationValidationSchema } from 'validation-schemas/validation-schemas';
+import { INITIAL_VALUES } from './constants';
 import styles from './styles';
 
 const RegistrationForm = ({ onRegister }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
 
-  const handleRegisterPress = async () => {
+  const handleSubmit = values => {
     setIsLoading(true);
-    onRegister({ email, password, username })
+    onRegister(values)
       .unwrap()
       .catch(() => setIsLoading(false));
   };
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit: handleRegisterPress
+  } = useFormik({
+    initialValues: INITIAL_VALUES,
+    validationSchema: registrationValidationSchema,
+    onSubmit: handleSubmit
+  });
 
   const handleLoginPress = () => {
     navigation.setParams({
@@ -29,26 +42,32 @@ const RegistrationForm = ({ onRegister }) => {
     <View>
       <Stack space={15}>
         <Input
-          value={username}
+          value={values.username}
           icon={IconName.USER}
           placeholder="johndoe"
           isDisabled={isLoading}
-          setValue={setUsername}
+          error={touched.username ? errors.username : ''}
+          onChangeText={handleChange('username')}
+          onBlur={handleBlur('username')}
         />
         <Input
-          value={email}
+          value={values.email}
           icon={IconName.ENVELOPE}
           placeholder="johndoe@mail.com"
           isDisabled={isLoading}
-          setValue={setEmail}
+          error={touched.email ? errors.email : ''}
+          onChangeText={handleChange('email')}
+          onBlur={handleBlur('email')}
         />
         <Input
-          value={password}
+          value={values.password}
           icon={IconName.LOCK}
           placeholder="password"
           isSecure
           isDisabled={isLoading}
-          setValue={setPassword}
+          error={touched.password ? errors.password : ''}
+          onChangeText={handleChange('password')}
+          onBlur={handleBlur('password')}
         />
         <Button
           title="Sign Up"

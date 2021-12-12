@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createStackNavigator,
+  TransitionPresets
+} from '@react-navigation/stack';
 import { AuthFormType, RootScreenName } from 'common/enums/enums';
 import { Spinner } from 'components/common/common';
 import { useDispatch, useEffect, useSelector, useState } from 'hooks/hooks';
@@ -7,10 +10,11 @@ import Auth from 'screens/auth/auth';
 import { profileActionCreator } from 'store/actions';
 import App from './app/app.navigation';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const screenOptions = {
-  headerShown: false
+  headerShown: false,
+  ...TransitionPresets.ScaleFromCenterAndroid
 };
 
 const RootNavigation = () => {
