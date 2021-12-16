@@ -21,6 +21,7 @@ import {
   useDispatch,
   useEffect,
   useNavigation,
+  useRef,
   useSelector,
   useState
 } from 'hooks/hooks';
@@ -43,6 +44,8 @@ const ExpandedPost = () => {
     userId: state.profile.user?.id
   }));
   const [showOwnPosts, setShowOwnPosts] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const isFlatListReady = useRef(false); // to avoid firing onEndReached on load on IOS
 
   const handlePostLike = useCallback(
     id => dispatch(threadActionCreator.likePost(id)),
@@ -63,46 +66,53 @@ const ExpandedPost = () => {
     });
   }, []);
 
-  const handlePostsLoad = filtersPayload => {
-    dispatch(threadActionCreator.loadPosts(filtersPayload));
-  };
-
-  const handleMorePostsLoad = useCallback(
+  const handlePostsLoad = useCallback(
     filtersPayload => {
-      dispatch(threadActionCreator.loadMorePosts(filtersPayload));
+      setIsLoading(true);
+      dispatch(threadActionCreator.loadPosts(filtersPayload)).finally(() => {
+        setIsLoading(false);
+      });
     },
     [dispatch]
   );
+
+  const handleMorePostsLoad = filtersPayload => {
+    setIsLoading(true);
+    dispatch(threadActionCreator.loadMorePosts(filtersPayload)).finally(() => {
+      setIsLoading(false);
+    });
+  };
+
+  const getMorePosts = () => {
+    if (isFlatListReady.current && hasMorePosts && !isLoading) {
+      handleMorePostsLoad({ ...postsFilter });
+      postsFilter.from += 1;
+    }
+  };
 
   const toggleShowOwnPosts = () => {
     setShowOwnPosts(!showOwnPosts);
     postsFilter.userId = showOwnPosts ? undefined : userId;
     postsFilter.from = 0;
     handlePostsLoad({ ...postsFilter });
-    postsFilter.from = postsFilter.count; // for the next scroll
+    postsFilter.from += 1;
   };
 
-  const getMorePosts = useCallback(() => {
-    handleMorePostsLoad({ ...postsFilter });
-    const { from, count } = postsFilter;
-    postsFilter.from = from + count;
-  }, [handleMorePostsLoad]);
-
-  const handleEndReached = () => {
-    if (hasMorePosts) {
-      getMorePosts();
-    }
+  const handleScroll = () => {
+    isFlatListReady.current = true;
   };
 
   useEffect(() => {
-    getMorePosts();
-  }, [getMorePosts]);
+    postsFilter.from = 0;
+    handlePostsLoad({ ...postsFilter });
+    postsFilter.from += 1;
+  }, [handlePostsLoad]);
 
   return (
     <SafeAreaView>
       <FlatList
-        bounces={false}
         data={posts}
+        bounces={false}
         keyExtractor={({ id }) => id}
         ListHeaderComponent={(
           <>
@@ -121,8 +131,9 @@ const ExpandedPost = () => {
             </View>
           </>
         )}
-        onEndReachedThreshold={0}
-        onEndReached={handleEndReached}
+        onEndReachedThreshold={0.01}
+        onEndReached={getMorePosts}
+        onScroll={handleScroll}
         renderItem={({ item: post }) => (
           <Post
             post={post}

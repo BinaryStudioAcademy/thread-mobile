@@ -23,9 +23,9 @@ const socket = ({ getState, dispatch }) => next => {
   return action => {
     switch (action.type) {
       case profileActionCreator.login.fulfilled.toString(): {
-        const user = action.payload;
+        const { payload: user } = action;
         if (user) {
-          userSocket.emit(SocketEvent.CREATE_ROOM, action.payload.id);
+          userSocket.emit(SocketEvent.CREATE_ROOM, user.id);
         }
         break;
       }
