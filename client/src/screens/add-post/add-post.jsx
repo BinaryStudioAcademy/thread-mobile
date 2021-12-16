@@ -7,13 +7,7 @@ import {
   NotificationMessage,
   TextVariant
 } from 'common/enums/enums';
-import {
-  Button,
-  Image,
-  SafeAreaView,
-  Text,
-  View
-} from 'components/common/common';
+import { Button, Image, Text, View } from 'components/common/common';
 import { AppColor } from 'config/config';
 import { pickImage } from 'helpers/helpers';
 import { useDispatch, useNavigation, useState } from 'hooks/hooks';
@@ -61,41 +55,39 @@ const AddPost = () => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.screen}>
-        <Text variant={TextVariant.HEADLINE}>Add Post</Text>
-        <TextInput
-          multiline
-          value={body}
-          placeholder="Type something here..."
-          placeholderTextColor={AppColor.PLACEHOLDER}
-          numberOfLines={10}
-          style={styles.input}
-          onChangeText={setBody}
-        />
-        <View style={styles.buttonWrapper}>
-          <Button
-            title="Attach image"
-            variant={ButtonVariant.TEXT}
-            icon={IconName.PLUS_SQUARE}
-            isLoading={isUploading}
-            onPress={handleUploadFile}
-          />
-        </View>
-        {image?.link && (
-          <Image
-            style={styles.image}
-            accessibilityIgnoresInvertColors
-            source={{ uri: image?.link }}
-          />
-        )}
+    <View style={styles.screen}>
+      <Text variant={TextVariant.HEADLINE}>Add Post</Text>
+      <TextInput
+        multiline
+        value={body}
+        placeholder="Type something here..."
+        placeholderTextColor={AppColor.PLACEHOLDER}
+        numberOfLines={10}
+        style={styles.input}
+        onChangeText={setBody}
+      />
+      <View style={styles.buttonWrapper}>
         <Button
-          title="Add"
-          isDisabled={!body || isUploading}
-          onPress={handleAddPost}
+          title="Attach image"
+          variant={ButtonVariant.TEXT}
+          icon={IconName.PLUS_SQUARE}
+          isLoading={isUploading}
+          onPress={handleUploadFile}
         />
       </View>
-    </SafeAreaView>
+      {image?.link && (
+        <Image
+          style={styles.image}
+          accessibilityIgnoresInvertColors
+          source={{ uri: image?.link }}
+        />
+      )}
+      <Button
+        title="Add"
+        isDisabled={!body || isUploading}
+        onPress={handleAddPost}
+      />
+    </View>
   );
 };
 

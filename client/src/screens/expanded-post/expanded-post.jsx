@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NotificationMessage } from 'common/enums/enums';
-import { FlatList, SafeAreaView, Spinner } from 'components/common/common';
+import { FlatList, Spinner } from 'components/common/common';
 import { Post } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import { useCallback, useDispatch, useSelector } from 'hooks/hooks';
@@ -40,25 +40,24 @@ const ExpandedPost = () => {
   }
 
   return (
-    <SafeAreaView>
-      <FlatList
-        data={sortedComments}
-        keyExtractor={({ id }) => id}
-        ListHeaderComponentStyle={styles.header}
-        contentContainerStyle={styles.container}
-        ListHeaderComponent={(
-          <>
-            <Post
-              post={post}
-              onPostLike={handlePostLike}
-              onPostShare={handlePostShare}
-            />
-            <AddComment postId={post.id} onCommentAdd={handleCommentAdd} />
-          </>
-        )}
-        renderItem={({ item: comment }) => <Comment comment={comment} />}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={sortedComments}
+      bounces={false}
+      keyExtractor={({ id }) => id}
+      ListHeaderComponentStyle={styles.header}
+      contentContainerStyle={styles.container}
+      ListHeaderComponent={(
+        <>
+          <Post
+            post={post}
+            onPostLike={handlePostLike}
+            onPostShare={handlePostShare}
+          />
+          <AddComment postId={post.id} onCommentAdd={handleCommentAdd} />
+        </>
+      )}
+      renderItem={({ item: comment }) => <Comment comment={comment} />}
+    />
   );
 };
 

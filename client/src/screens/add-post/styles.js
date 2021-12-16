@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   input: {
     height: 200,
     padding: 10,
+    paddingTop: 10,
     marginTop: 15,
     fontSize: 16,
     color: AppColor.TEXT,
@@ -23,7 +24,8 @@ const styles = StyleSheet.create({
     height: 170,
     width: '100%',
     marginBottom: 25,
-    borderRadius: 5
+    borderRadius: 5,
+    backgroundColor: AppColor.BACKGROUND_DARK
   }
 });
 

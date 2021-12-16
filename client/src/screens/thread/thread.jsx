@@ -6,14 +6,7 @@ import {
   TextVariant
 } from 'common/enums/enums';
 import { AppColor } from 'config/config';
-import {
-  FlatList,
-  Icon,
-  SafeAreaView,
-  Switch,
-  Text,
-  View
-} from 'components/common/common';
+import { FlatList, Icon, Switch, Text, View } from 'components/common/common';
 import { Post } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import {
@@ -109,41 +102,39 @@ const ExpandedPost = () => {
   }, [handlePostsLoad]);
 
   return (
-    <SafeAreaView>
-      <FlatList
-        data={posts}
-        bounces={false}
-        keyExtractor={({ id }) => id}
-        ListHeaderComponent={(
-          <>
-            <View style={styles.header}>
-              <Icon name={IconName.CAT} size={24} color={AppColor.HEADLINE} />
-              <Text variant={TextVariant.HEADLINE} style={styles.logoText}>
-                Thread
-              </Text>
-            </View>
-            <View style={styles.filter}>
-              <Switch
-                value={showOwnPosts}
-                label="Show only my posts"
-                onToggleValue={toggleShowOwnPosts}
-              />
-            </View>
-          </>
-        )}
-        onEndReachedThreshold={0.01}
-        onEndReached={getMorePosts}
-        onScroll={handleScroll}
-        renderItem={({ item: post }) => (
-          <Post
-            post={post}
-            onPostLike={handlePostLike}
-            onPostShare={handlePostShare}
-            onPostExpand={handlePostExpand}
-          />
-        )}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={posts}
+      bounces={false}
+      keyExtractor={({ id }) => id}
+      ListHeaderComponent={(
+        <>
+          <View style={styles.header}>
+            <Icon name={IconName.CAT} size={24} color={AppColor.HEADLINE} />
+            <Text variant={TextVariant.HEADLINE} style={styles.logoText}>
+              Thread
+            </Text>
+          </View>
+          <View style={styles.filter}>
+            <Switch
+              value={showOwnPosts}
+              label="Show only my posts"
+              onToggleValue={toggleShowOwnPosts}
+            />
+          </View>
+        </>
+      )}
+      onEndReachedThreshold={0.01}
+      onEndReached={getMorePosts}
+      onScroll={handleScroll}
+      renderItem={({ item: post }) => (
+        <Post
+          post={post}
+          onPostLike={handlePostLike}
+          onPostShare={handlePostShare}
+          onPostExpand={handlePostExpand}
+        />
+      )}
+    />
   );
 };
 

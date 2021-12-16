@@ -14,7 +14,7 @@ const AppColor = {
   ICON: `hsl(${HUE}, 20%, 75%)`,
   PLACEHOLDER: `hsl(${HUE}, 20%, 60%)`,
   WHITE: 'hsl(0, 0%, 100%)',
-  ERROR: 'hsl(0, 89%, 60%)'
+  ERROR: 'hsl(0, 90%, 60%)'
 };
 
 export { AppColor };
