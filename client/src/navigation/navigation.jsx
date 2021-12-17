@@ -31,7 +31,7 @@ const RootNavigation = () => {
     dispatch(profileActionCreator.loadCurrentUser()).finally(() => {
       setIsLoading(false);
     });
-  }, [dispatch]);
+  }, [dispatch, setIsLoading]);
 
   if (!hasUser && isLoading) {
     return <Spinner isOverflow />;

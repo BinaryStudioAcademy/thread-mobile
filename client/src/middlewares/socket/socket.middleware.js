@@ -15,7 +15,7 @@ const socket = ({ getState, dispatch }) => next => {
       profile: { user }
     } = getState();
 
-    if (post.userId !== user.id) {
+    if (post.userId !== user?.id) {
       dispatch(threadActionCreator.applyPost(post.id));
     }
   });

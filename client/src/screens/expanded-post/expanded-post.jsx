@@ -12,7 +12,6 @@ import styles from './styles';
 
 const ExpandedPost = () => {
   const dispatch = useDispatch();
-
   const { post } = useSelector(state => ({
     post: state.posts.expandedPost
   }));
@@ -29,11 +28,12 @@ const ExpandedPost = () => {
     [dispatch]
   );
 
-  const handlePostShare = useCallback(({ body, image }) => {
-    sharePost({ body, image }).catch(() => {
+  const handlePostShare = useCallback(
+    ({ body, image }) => sharePost({ body, image }).catch(() => {
       notificationService.error(NotificationMessage.OPERATION_FAILED);
-    });
-  }, []);
+    }),
+    []
+  );
 
   if (!post) {
     return <Spinner isOverflow />;

@@ -30,7 +30,7 @@ const postsFilter = {
 
 const ExpandedPost = () => {
   const dispatch = useDispatch();
-  const navigator = useNavigation();
+  const navigation = useNavigation();
   const { posts, hasMorePosts, userId } = useSelector(state => ({
     posts: state.posts.posts,
     hasMorePosts: state.posts.hasMorePosts,
@@ -48,9 +48,9 @@ const ExpandedPost = () => {
   const handlePostExpand = useCallback(
     id => {
       dispatch(threadActionCreator.loadExpandedPost(id));
-      navigator.navigate(HomeScreenName.EXPANDED_POST);
+      navigation.navigate(HomeScreenName.EXPANDED_POST);
     },
-    [dispatch]
+    [dispatch, navigation]
   );
 
   const handlePostShare = useCallback(({ body, image }) => {
@@ -60,12 +60,7 @@ const ExpandedPost = () => {
   }, []);
 
   const handlePostsLoad = useCallback(
-    filtersPayload => {
-      setIsLoading(true);
-      dispatch(threadActionCreator.loadPosts(filtersPayload)).finally(() => {
-        setIsLoading(false);
-      });
-    },
+    filtersPayload => dispatch(threadActionCreator.loadPosts(filtersPayload)),
     [dispatch]
   );
 
@@ -87,7 +82,8 @@ const ExpandedPost = () => {
     setShowOwnPosts(!showOwnPosts);
     postsFilter.userId = showOwnPosts ? undefined : userId;
     postsFilter.from = 0;
-    handlePostsLoad({ ...postsFilter });
+    setIsLoading(true);
+    handlePostsLoad({ ...postsFilter }).then(() => setIsLoading(false));
     postsFilter.from += 1;
   };
 
@@ -97,9 +93,15 @@ const ExpandedPost = () => {
 
   useEffect(() => {
     postsFilter.from = 0;
-    handlePostsLoad({ ...postsFilter });
+
+    setIsLoading(true);
+    const request = handlePostsLoad({ ...postsFilter });
+    request.then(() => setIsLoading(false));
+
     postsFilter.from += 1;
-  }, [handlePostsLoad]);
+
+    return () => request.abort();
+  }, [handlePostsLoad, setIsLoading]);
 
   return (
     <FlatList
