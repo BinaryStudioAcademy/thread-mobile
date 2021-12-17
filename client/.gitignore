@@ -58,3 +58,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# dotenv environment variables file
+.env.android
+.env.ios

@@ -1,11 +1,7 @@
 extends:
-  - '@react-native-community'
   - 'plugin:react-native-a11y/ios'
   - airbnb
   - ../.eslintrc.yml
-
-parser:
-  'babel-eslint'
 
 env:
   browser: true
@@ -44,4 +40,6 @@ rules:
     - 2
     - namedComponents: arrow-function
   react/jsx-props-no-spreading:
+    - off
+  react/jsx-no-useless-fragment:
     - off

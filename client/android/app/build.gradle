@@ -1,5 +1,18 @@
 apply plugin: "com.android.application"
 
+project.ext.envConfigFiles = [
+  debug: '.env.android',
+  release: '.env.android',
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'FontAwesome5_Brands.ttf',  'FontAwesome5_Regular.ttf', 'FontAwesome5_Solid.ttf']
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
 import com.android.build.OutputFile
 
 /**
@@ -225,3 +238,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+

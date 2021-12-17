@@ -8,7 +8,7 @@ const initPost = (router, opts, done) => {
     .get(PostsApiPath.$ID, req => postService.getPostById(req.params.id))
     .post(PostsApiPath.ROOT, async req => {
       const post = await postService.create(req.user.id, req.body);
-      req.io.emit('new_post', post); // notify all users that a new post was created
+      req.io.emit('newPost', post); // notify all users that a new post was created
       return post;
     })
     .put(PostsApiPath.REACT, async req => {
