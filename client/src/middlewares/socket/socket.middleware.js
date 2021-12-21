@@ -29,6 +29,7 @@ const socket = ({ getState, dispatch }) => next => {
         }
         break;
       }
+
       case profileActionCreator.logout.fulfilled.toString(): {
         const {
           profile: { user }
@@ -38,6 +39,7 @@ const socket = ({ getState, dispatch }) => next => {
         }
         break;
       }
+
       default:
         break;
     }

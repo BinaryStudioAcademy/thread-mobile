@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch as UISwitch } from 'react-native';
 import PropTypes from 'prop-types';
 import { HUE } from 'common/constants/constants';
-import { Text, View } from 'components/common/common';
+import { Text, View } from 'components/components';
 import { AppColor } from 'config/config';
 import styles from './styles';
 

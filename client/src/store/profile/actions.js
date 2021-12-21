@@ -43,9 +43,11 @@ const loadCurrentUser = createAsyncThunk(
   ) => {
     try {
       const token = await services.storage.getItem(StorageKey.TOKEN);
+
       if (!token) {
         return fulfillWithValue(null);
       }
+
       return await services.auth.getCurrentUser();
     } catch (err) {
       const isHttpError = err instanceof HttpError;

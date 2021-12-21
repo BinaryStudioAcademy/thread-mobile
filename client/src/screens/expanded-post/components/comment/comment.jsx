@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextVariant } from 'common/enums/enums';
 import { DEFAULT_USER_AVATAR } from 'common/constants/constants';
 import { commentType } from 'common/prop-types/prop-types';
-import { Image, Text, View } from 'components/common/common';
+import { Image, Text, View } from 'components/components';
 import { getFromNowTime } from 'helpers/helpers';
 import styles from './styles';
 

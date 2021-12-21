@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { NotificationMessage } from 'common/enums/enums';
-import { FlatList, Spinner } from 'components/common/common';
-import { Post } from 'components/components';
+import { Post, FlatList, Spinner } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import { useCallback, useDispatch, useSelector } from 'hooks/hooks';
 import { notification as notificationService } from 'services/services';
@@ -41,8 +40,8 @@ const ExpandedPost = () => {
 
   return (
     <FlatList
-      data={sortedComments}
       bounces={false}
+      data={sortedComments}
       keyExtractor={({ id }) => id}
       ListHeaderComponentStyle={styles.header}
       contentContainerStyle={styles.container}

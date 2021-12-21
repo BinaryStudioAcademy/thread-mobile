@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DEFAULT_USER_AVATAR } from 'common/constants/constants';
 import { IconName, TextVariant } from 'common/enums/enums';
 import { postType } from 'common/prop-types/prop-types';
-import { Icon, Image, Stack, Text, View } from 'components/common/common';
+import { Icon, Image, Stack, Text, View } from 'components/components';
 import { getFromNowTime } from 'helpers/helpers';
 import styles from './styles';
 
@@ -35,8 +35,7 @@ const Post = ({ post, onPostLike, onPostShare, onPostExpand }) => {
         <View style={styles.header}>
           <Text variant={TextVariant.TITLE}>{user.username}</Text>
           <Text variant={TextVariant.SUBTITLE}>
-            {' '}
-            •
+            {' • '}
             {date}
           </Text>
         </View>

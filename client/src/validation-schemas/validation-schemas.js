@@ -1,2 +1,2 @@
-export * from './login/login.schema';
-export * from './registration/registration.schema';
+export * from './login/login.validation-schema';
+export * from './registration/registration.validation-schema';

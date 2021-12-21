@@ -1,36 +1,35 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useFormik } from 'formik';
-import { AuthFormType, IconName, TextVariant } from 'common/enums/enums';
-import { Button, Input, Stack, Text, View } from 'components/common/common';
-import { useNavigation, useState } from 'hooks/hooks';
+import {
+  AuthFormType,
+  IconName,
+  TextVariant,
+  UserPayloadKey
+} from 'common/enums/enums';
+import { Button, Input, Stack, Text, View } from 'components/components';
+import { useAppForm, useNavigation, useState } from 'hooks/hooks';
 import { registration as registrationValidationSchema } from 'validation-schemas/validation-schemas';
-import { INITIAL_VALUES } from './constants';
+import { DEFAULT_REGISTRATION_PAYLOAD } from './constants';
 import styles from './styles';
 
 const RegistrationForm = ({ onRegister }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
+  const { control, errors, handleSubmit } = useAppForm({
+    defaultValues: DEFAULT_REGISTRATION_PAYLOAD,
+    validationSchema: registrationValidationSchema
+  });
 
-  const handleSubmit = values => {
+  const handleRegister = values => {
     setIsLoading(true);
+
     onRegister(values)
       .unwrap()
-      .catch(() => setIsLoading(false));
+      .catch(() => {
+        // TODO: show error
+        setIsLoading(false);
+      });
   };
-
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit: handleRegisterPress
-  } = useFormik({
-    initialValues: INITIAL_VALUES,
-    validationSchema: registrationValidationSchema,
-    onSubmit: handleSubmit
-  });
 
   const handleLoginPress = () => {
     navigation.setParams({
@@ -42,37 +41,34 @@ const RegistrationForm = ({ onRegister }) => {
     <View>
       <Stack space={15}>
         <Input
-          value={values.username}
-          icon={IconName.USER}
+          name={UserPayloadKey.USERNAME}
+          control={control}
+          errors={errors}
           placeholder="johndoe"
+          iconName={IconName.USER}
           isDisabled={isLoading}
-          error={touched.username ? errors.username : ''}
-          onChangeText={handleChange('username')}
-          onBlur={handleBlur('username')}
         />
         <Input
-          value={values.email}
-          icon={IconName.ENVELOPE}
+          name={UserPayloadKey.EMAIL}
+          control={control}
+          errors={errors}
           placeholder="johndoe@mail.com"
+          iconName={IconName.ENVELOPE}
           isDisabled={isLoading}
-          error={touched.email ? errors.email : ''}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
         />
         <Input
-          value={values.password}
-          icon={IconName.LOCK}
+          name={UserPayloadKey.PASSWORD}
+          control={control}
+          errors={errors}
           placeholder="password"
-          isSecure
+          iconName={IconName.LOCK}
           isDisabled={isLoading}
-          error={touched.password ? errors.password : ''}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
+          isSecure
         />
         <Button
           title="Sign Up"
           isLoading={isLoading}
-          onPress={handleRegisterPress}
+          onPress={handleSubmit(handleRegister)}
         />
       </Stack>
       <View style={styles.message}>

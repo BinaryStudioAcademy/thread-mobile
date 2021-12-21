@@ -6,7 +6,7 @@ import {
   TouchableNativeFeedback
 } from 'react-native';
 import { ButtonVariant, IconName } from 'common/enums/enums';
-import { Icon, Spinner, Text, View } from 'components/common/common';
+import { Icon, Spinner, Text, View } from 'components/components';
 import theme from './theme';
 import styles from './styles';
 

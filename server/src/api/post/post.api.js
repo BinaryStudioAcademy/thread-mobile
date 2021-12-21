@@ -1,4 +1,4 @@
-import { PostsApiPath } from '../../common/enums/enums';
+import { PostsApiPath, SocketEvent } from '../../common/enums/enums';
 
 const initPost = (router, opts, done) => {
   const { post: postService } = opts.services;
@@ -8,7 +8,7 @@ const initPost = (router, opts, done) => {
     .get(PostsApiPath.$ID, req => postService.getPostById(req.params.id))
     .post(PostsApiPath.ROOT, async req => {
       const post = await postService.create(req.user.id, req.body);
-      req.io.emit('newPost', post); // notify all users that a new post was created
+      req.io.emit(SocketEvent.NEW_POST, post); // notify all users that a new post was created
       return post;
     })
     .put(PostsApiPath.REACT, async req => {
@@ -16,7 +16,9 @@ const initPost = (router, opts, done) => {
 
       if (reaction.post && reaction.post.userId !== req.user.id) {
         // notify a user if someone (not himself) liked his post
-        req.io.to(reaction.post.userId).emit('like', 'Your post was liked!');
+        req.io
+          .to(reaction.post.userId)
+          .emit(SocketEvent.LIKE, 'Your post was liked!');
       }
       return reaction;
     });

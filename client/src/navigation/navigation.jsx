@@ -4,7 +4,7 @@ import {
   TransitionPresets
 } from '@react-navigation/stack';
 import { AuthFormType, RootScreenName } from 'common/enums/enums';
-import { Spinner } from 'components/common/common';
+import { Spinner } from 'components/components';
 import { useDispatch, useEffect, useSelector, useState } from 'hooks/hooks';
 import Auth from 'screens/auth/auth';
 import { profileActionCreator } from 'store/actions';
@@ -28,9 +28,11 @@ const RootNavigation = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    dispatch(profileActionCreator.loadCurrentUser()).finally(() => {
-      setIsLoading(false);
-    });
+    dispatch(profileActionCreator.loadCurrentUser())
+      .unwrap()
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [dispatch, setIsLoading]);
 
   if (!hasUser && isLoading) {

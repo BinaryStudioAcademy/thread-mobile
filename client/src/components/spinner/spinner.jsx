@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { ActivityIndicator } from 'react-native';
-import { View } from 'components/common/common';
+import { View } from 'components/components';
 import { AppColor } from 'config/config';
 import styles from './styles';
 
