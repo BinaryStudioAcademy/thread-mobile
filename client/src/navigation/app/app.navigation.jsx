@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { IconName, AppScreenName } from 'common/enums/enums';
-import { Icon } from 'components/common/common';
+import { Icon } from 'components/components';
 import { AppColor } from 'config/config';
 import AddPost from 'screens/add-post/add-post';
 import Profile from 'screens/profile/profile';

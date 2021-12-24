@@ -4,7 +4,7 @@ import { TouchableOpacity, ViewPropTypes } from 'react-native';
 import IconUI from 'react-native-vector-icons/FontAwesome5';
 import { AppColor } from 'config/config';
 import { IconName } from 'common/enums/enums';
-import { Text } from 'components/common/common';
+import { Text } from 'components/components';
 import styles from './styles';
 
 const Icon = ({ name, size, color, label, style, onPress }) => (

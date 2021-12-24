@@ -7,7 +7,7 @@ import {
   NotificationMessage,
   TextVariant
 } from 'common/enums/enums';
-import { Button, Image, Text, View } from 'components/common/common';
+import { Button, Image, Text, View } from 'components/components';
 import { AppColor } from 'config/config';
 import { pickImage } from 'helpers/helpers';
 import { useDispatch, useNavigation, useState } from 'hooks/hooks';

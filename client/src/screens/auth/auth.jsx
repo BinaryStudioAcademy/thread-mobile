@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCallback, useDispatch, useRoute } from 'hooks/hooks';
 import { AuthFormType, TextVariant } from 'common/enums/enums';
-import { Image, Text, View } from 'components/common/common';
+import { Image, Text, View } from 'components/components';
 import { profileActionCreator } from 'store/actions';
 import { LoginForm, RegistrationForm } from './components/components';
 import styles from './styles';

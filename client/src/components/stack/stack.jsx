@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'components/common/common';
+import { View } from 'components/components';
 
 const Stack = ({ children, space, isRow }) => {
   const separatorStyle = {

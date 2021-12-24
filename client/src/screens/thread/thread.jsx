@@ -5,9 +5,15 @@ import {
   NotificationMessage,
   TextVariant
 } from 'common/enums/enums';
+import {
+  Post,
+  FlatList,
+  Icon,
+  Switch,
+  Text,
+  View
+} from 'components/components';
 import { AppColor } from 'config/config';
-import { FlatList, Icon, Switch, Text, View } from 'components/common/common';
-import { Post } from 'components/components';
 import { sharePost } from 'helpers/helpers';
 import {
   useCallback,
@@ -66,15 +72,17 @@ const ExpandedPost = () => {
 
   const handleMorePostsLoad = filtersPayload => {
     setIsLoading(true);
-    dispatch(threadActionCreator.loadMorePosts(filtersPayload)).finally(() => {
-      setIsLoading(false);
-    });
+    dispatch(threadActionCreator.loadMorePosts(filtersPayload))
+      .unwrap()
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const getMorePosts = () => {
     if (isFlatListReady.current && hasMorePosts && !isLoading) {
       handleMorePostsLoad({ ...postsFilter });
-      postsFilter.from += 1;
+      postsFilter.from += postsFilter.count;
     }
   };
 
@@ -83,8 +91,10 @@ const ExpandedPost = () => {
     postsFilter.userId = showOwnPosts ? undefined : userId;
     postsFilter.from = 0;
     setIsLoading(true);
-    handlePostsLoad({ ...postsFilter }).then(() => setIsLoading(false));
-    postsFilter.from += 1;
+    handlePostsLoad({ ...postsFilter })
+      .unwrap()
+      .finally(() => setIsLoading(false));
+    postsFilter.from += postsFilter.count;
   };
 
   const handleScroll = () => {
@@ -96,17 +106,17 @@ const ExpandedPost = () => {
 
     setIsLoading(true);
     const request = handlePostsLoad({ ...postsFilter });
-    request.then(() => setIsLoading(false));
+    request.unwrap().finally(() => setIsLoading(false));
 
-    postsFilter.from += 1;
+    postsFilter.from += postsFilter.count;
 
     return () => request.abort();
   }, [handlePostsLoad, setIsLoading]);
 
   return (
     <FlatList
-      data={posts}
       bounces={false}
+      data={posts}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={(
         <>
@@ -125,7 +135,7 @@ const ExpandedPost = () => {
           </View>
         </>
       )}
-      onEndReachedThreshold={0.01}
+      onEndReachedThreshold={0.1}
       onEndReached={getMorePosts}
       onScroll={handleScroll}
       renderItem={({ item: post }) => (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { NotificationType } from 'common/enums/enums';
-import { Icon, Text, View } from 'components/common/common';
+import { Icon, Text, View } from 'components/components';
 import theme from './theme';
 import styles from './styles';
 

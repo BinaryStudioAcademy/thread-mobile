@@ -1,36 +1,35 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useFormik } from 'formik';
-import { AuthFormType, IconName, TextVariant } from 'common/enums/enums';
-import { Button, Input, Stack, Text, View } from 'components/common/common';
-import { useNavigation, useState } from 'hooks/hooks';
+import {
+  AuthFormType,
+  IconName,
+  TextVariant,
+  UserPayloadKey
+} from 'common/enums/enums';
+import { Button, Input, Stack, Text, View } from 'components/components';
+import { useAppForm, useNavigation, useState } from 'hooks/hooks';
 import { login as loginValidationSchema } from 'validation-schemas/validation-schemas';
-import { INITIAL_VALUES } from './constants';
+import { DEFAULT_LOGIN_PAYLOAD } from './constants';
 import styles from './styles';
 
 const LoginForm = ({ onLogin }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
+  const { control, errors, handleSubmit } = useAppForm({
+    defaultValues: DEFAULT_LOGIN_PAYLOAD,
+    validationSchema: loginValidationSchema
+  });
 
-  const handleSubmit = values => {
+  const handleLogin = values => {
     setIsLoading(true);
+
     onLogin(values)
       .unwrap()
-      .catch(() => setIsLoading(false));
+      .catch(() => {
+        // TODO: show error
+        setIsLoading(false);
+      });
   };
-
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit: handleLoginPress
-  } = useFormik({
-    initialValues: INITIAL_VALUES,
-    validationSchema: loginValidationSchema,
-    onSubmit: handleSubmit
-  });
 
   const handleSignUpPress = () => {
     navigation.setParams({
@@ -42,28 +41,26 @@ const LoginForm = ({ onLogin }) => {
     <View>
       <Stack space={15}>
         <Input
-          value={values.email}
-          icon={IconName.ENVELOPE}
+          name={UserPayloadKey.EMAIL}
+          control={control}
+          errors={errors}
           placeholder="johndoe@mail.com"
+          iconName={IconName.ENVELOPE}
           isDisabled={isLoading}
-          error={touched.email ? errors.email : ''}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
         />
         <Input
-          value={values.password}
-          icon={IconName.LOCK}
+          name={UserPayloadKey.PASSWORD}
+          control={control}
+          errors={errors}
           placeholder="password"
-          isSecure
+          iconName={IconName.LOCK}
           isDisabled={isLoading}
-          error={touched.password ? errors.password : ''}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
+          isSecure
         />
         <Button
           title="Login"
           isLoading={isLoading}
-          onPress={handleLoginPress}
+          onPress={handleSubmit(handleLogin)}
         />
       </Stack>
       <View style={styles.message}>

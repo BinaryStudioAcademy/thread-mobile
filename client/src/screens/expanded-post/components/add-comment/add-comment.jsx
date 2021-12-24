@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { IconName } from 'common/enums/enums';
-import { Icon, View } from 'components/common/common';
+import { Icon, View } from 'components/components';
 import { AppColor } from 'config/config';
 import { useState } from 'hooks/hooks';
 import styles from './styles';

@@ -19,9 +19,11 @@ const styles = StyleSheet.create({
   },
   error: {
     flexDirection: 'row',
+    alignItems: 'flex-start',
     marginTop: 3
   },
   errorMessage: {
+    flexShrink: 1,
     fontSize: 14,
     color: AppColor.ERROR,
     marginLeft: 5

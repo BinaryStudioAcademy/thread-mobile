@@ -1,9 +1,9 @@
 import Config from 'react-native-config';
 
-const { API_BASE, SOCKET_SERVER } = Config;
+const { API_PATH, SOCKET_SERVER } = Config;
 
 const ENV = {
-  API_BASE,
+  API_PATH,
   SOCKET_SERVER
 };
 

@@ -1,1 +1,1 @@
-export * from './pick-image/pick-image';
+export * from './pick-image/pick-image.helper';
