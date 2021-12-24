@@ -63,10 +63,10 @@
 
 4. Установите Git.
 
-5. Склонировать [репозиторий](https://github.com/BinaryStudioAcademy/thread-js) проекта:
+5. Склонировать [репозиторий](https://github.com/BinaryStudioAcademy/thread-mobile) проекта:
 
     ```bash
-    git clone git@github.com:BinaryStudioAcademy/thread-js.git
+    git clone git@github.com:BinaryStudioAcademy/thread-mobile.git
     ```
 
 6. **Создать репозиторий на [Bitbucket](https://bitbucket.org/) и вести дальнейшую разработку там.**
