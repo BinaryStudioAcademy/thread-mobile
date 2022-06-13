@@ -51,6 +51,8 @@ The main frameworks and libraries used in the project are listed here. A complet
 
     Replace in file **.env** key values to real.
 
+    If you are developing for ios platform replace 10.0.2.2 with localhost
+
 7. In the root of the project install all the dependencies:
     ```
       npm run install
@@ -79,6 +81,12 @@ The main frameworks and libraries used in the project are listed here. A complet
     npm run-ios
     ```
 
+    **Note**: if you are developing for ios platform install pods before
+
+    ```
+    npx pod-install
+    ```
+
 ### Backend
 
 The backend must be taken from this repository [ThreadJS](https://github.com/BinaryStudioAcademy/thread-js). Instructions for launching and configuring can be found in the readme of this repository.
@@ -87,7 +95,7 @@ The backend must be taken from this repository [ThreadJS](https://github.com/Bin
 
 Tasks can be completed for any of the Android or iOS platforms, when submitting a task, indicate which platform you used.
 
-The entire list of tasks can be found on the board [**Trello**](https://trello.com/b/zWReSa2x "**Trello**") in the column **To Do**. You need to copy the board for yourself and work on it. This will help you track the entire process of your work, and we will determine what is already ready. The task will be considered completed if it is fully completed and the feature works. Let's look at its implementation and evaluate whether the logic was distributed correctly in the project. This will show how much you understand the architecture. We will also comment on the code..
+The entire list of tasks can be found on the board [**Trello**](https://trello.com/b/zWReSa2x "**Trello**") in the column **To Do**. You can find some comments or attachments to the task in the task description. You need to copy the board for yourself and work on it. This will help you track the entire process of your work, and we will determine what is already ready. The task will be considered completed if it is fully completed and the feature works. Let's look at its implementation and evaluate whether the logic was distributed correctly in the project. This will show how much you understand the architecture. We will also comment on the code..
 
 The main result of the work can be determined by how deeply you were able to understand the project and understand it, and how far you have advanced in personal learning.
 
