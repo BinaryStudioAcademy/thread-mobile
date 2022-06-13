@@ -33,39 +33,49 @@ The main frameworks and libraries used in the project are listed here. A complet
     node -v  // for checking Node.js version
     npm -v // for checking npm version
 
-2. Install Git.
+2. Setup the environment by following [React Native documentation](https://reactnative.dev/docs/0.66/environment-setup)
 
-3. Clone project`s [repo](https://github.com/BinaryStudioAcademy/thread-mobile):
+3. Install Git.
+
+4. Clone project`s [repo](https://github.com/BinaryStudioAcademy/thread-mobile):
 
     ```
     git clone git@github.com:BinaryStudioAcademy/thread-mobile.git
     ```
 
-4. **Create a repo at [Bitbucket](https://bitbucket.org/) and carry out further development there.**
+5. **Create a repo at [Bitbucket](https://bitbucket.org/) and carry out further development there.**
 
-5. In the root of the project install all the dependencies:
+6.  In the root folder create a file **.env** and copy the contents of the file **.env.example** into it.
+
+    **Note**: file **.env** contains real project keys and should not be saved to the repository.
+
+    Replace in file **.env** key values to real.
+
+7. In the root of the project install all the dependencies:
     ```
       npm run install
     ```
 
-6. After installing the packages, in the root of the project, you need to run the command to [git-hooks](https://www.npmjs.com/package/simple-git-hooks):
+8. After installing the packages, in the root of the project, you need to run the command to [git-hooks](https://www.npmjs.com/package/simple-git-hooks):
     ```
       npx simple-git-hooks
     ```
 
-7.  In the root of the project you need to run the command:
+    **Now, for each of your commits, the linter will be launched and check your code.**
 
-    ```bash
+9.  To start the project in the root folder you need to run the following command:
+
+    ```
     npm start
     ```
 
-8. Open a new terminal and from the root folder run one of the following commands:
+10. Open a new terminal and from the root folder run one of the following commands:
 
-    ```bash
+    ```
     npm run-android
     ```
 
-    ```bash
+    ```
     npm run-ios
     ```
 
