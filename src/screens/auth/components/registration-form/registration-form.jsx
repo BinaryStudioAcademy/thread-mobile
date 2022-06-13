@@ -1,6 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { AuthFormType, IconName, TextVariant, UserPayloadKey } from 'common/enums/enums';
+import {
+  AuthFormType,
+  IconName,
+  TextVariant,
+  UserPayloadKey
+} from 'common/enums/enums';
 import { Button, Input, Stack, Text, View } from 'components/components';
 import { useAppForm, useNavigation, useState } from 'hooks/hooks';
 import { registration as registrationValidationSchema } from 'validation-schemas/validation-schemas';
@@ -22,6 +27,8 @@ const RegistrationForm = ({ onRegister }) => {
       .unwrap()
       .catch(() => {
         // TODO: show error
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -60,7 +67,11 @@ const RegistrationForm = ({ onRegister }) => {
           isDisabled={isLoading}
           isSecure
         />
-        <Button title="Sign Up" isLoading={isLoading} onPress={handleSubmit(handleRegister)} />
+        <Button
+          title="Sign Up"
+          isLoading={isLoading}
+          onPress={handleSubmit(handleRegister)}
+        />
       </Stack>
       <View style={styles.message}>
         <Text>Already have an account? </Text>

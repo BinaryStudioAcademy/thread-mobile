@@ -1,6 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { AuthFormType, IconName, TextVariant, UserPayloadKey } from 'common/enums/enums';
+import {
+  AuthFormType,
+  IconName,
+  TextVariant,
+  UserPayloadKey
+} from 'common/enums/enums';
 import { Button, Input, Stack, Text, View } from 'components/components';
 import { useAppForm, useNavigation, useState } from 'hooks/hooks';
 import { login as loginValidationSchema } from 'validation-schemas/validation-schemas';
@@ -22,6 +27,8 @@ const LoginForm = ({ onLogin }) => {
       .unwrap()
       .catch(() => {
         // TODO: show error
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -52,7 +59,11 @@ const LoginForm = ({ onLogin }) => {
           isDisabled={isLoading}
           isSecure
         />
-        <Button title="Login" isLoading={isLoading} onPress={handleSubmit(handleLogin)} />
+        <Button
+          title="Login"
+          isLoading={isLoading}
+          onPress={handleSubmit(handleLogin)}
+        />
       </Stack>
       <View style={styles.message}>
         <Text>Don’t have an account? </Text>

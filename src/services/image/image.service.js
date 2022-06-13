@@ -7,9 +7,11 @@ class Image {
   }
 
   uploadImage(image) {
+    const { uri, type, fileName: name } = image;
+
     const formData = new FormData();
 
-    formData.append('image', image);
+    formData.append('image', { uri, type, name });
 
     return this._http.load(`${this._apiPath}${ApiPath.IMAGES}`, {
       method: HttpMethod.POST,
