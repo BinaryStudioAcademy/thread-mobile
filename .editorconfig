@@ -1,3 +1,5 @@
+
+
 root = true
 
 [*]
@@ -7,3 +9,7 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8
+
+# Windows files
+[*.bat]
+end_of_line = crlf

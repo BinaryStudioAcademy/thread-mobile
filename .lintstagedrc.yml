@@ -1,3 +1,2 @@
 '*': npm run lint:editorconfig
-client/src/**/*.{js,jsx}: npm run lint:client:js
-server/**/*.js: npm run lint:server:js
+src/**/*.{js,jsx}: npm run lint:js

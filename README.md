@@ -1,222 +1,110 @@
-# BSA 2021 React Native - mini-project Thread
+# ThreadMobile
 
-## Описание
+## Description
+[**Thread**](https://github.com/BinaryStudioAcademy/thread-mobile) - this is mobile app with a ready-made architecture and structure, a connected basic technology stack and start-up functionality, designed for individual practice of students.
 
-[**Thread**](https://github.com/BinaryStudioAcademy/thread-mobile.git) - это приложение с готовой архитектурой и структурой, подключенным базовым стеком технологий и стартовым функционалом, предназначенный для самостоятельной практики студентов.
+The main theme of the project is a social network similar to Twitter.
 
-Тематика проекта - социальная сеть, похожая на Twitter.
+The main idea of the project is to onboard students with our vision of how a real project should look like from the inside, and give them the opportunity to individually explore how the architecture and structure of the project works, see its possible configurations, try to deeply understand someone else's code.
 
-Основная идея проекта -  ознакомить студентов с нашим виденьем того, как реальный проект должен выглядеть изнутри, и дать возможность самостоятельно исследовать, как устроена архитектура и структура проекта, посмотреть его возможные конфигурации, попробовать покопаться и разобраться в чужом коде.
+## Technologies
 
-## Технологии
-
-Здесь перечислены основные фреймворки и библиотеки, используемые в проекте. Полный список используемых технологий для каждой части проекта находится в файлах package.json в папках client и server.
+The main frameworks and libraries used in the project are listed here. A complete list of technologies used for each part of the project is in the `package.json` file.
 
 ### Common
 
-1. ES2021
+1. ESLatest
 2. [Git](https://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git "Git")
 3. [REST API](https://www.restapitutorial.com/lessons/restquicktips.html "REST API")
-4. [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token "JWT")
-5. [Socket.IO](https://socket.io/docs/ "Socket.IO")
-6. [npm](https://en.wikipedia.org/wiki/Npm_(software))
-7. [ESLint](https://eslint.org/docs/user-guide/getting-started "ESLint")
+4. [npm](https://en.wikipedia.org/wiki/Npm_(software))
+5. [ESLint](https://eslint.org/docs/user-guide/getting-started "ESLint")
+6. [React Native](https://reactnative.dev/docs/0.64/getting-started "React Native")
+7. [Redux](https://redux.js.org/introduction/getting-started "Redux")
+8. [React Navigation](https://reactnavigation.org/docs/getting-started "React Navigation")
+9. [dayjs](https://day.js.org/ "day.js")
+10. [React Hook Form](https://react-hook-form.com/get-started "React Hook Form")
+11. [joi](https://www.npmjs.com/package/joi "joi")
 
-### Frontend
+### Installation
 
-1. [React Native](https://reactnative.dev/docs/0.64/getting-started "React Native")
-2. [Redux](https://redux.js.org/introduction/getting-started "Redux")
-3. [React Navigation](https://reactnavigation.org/docs/getting-started "React Navigation")
-4. [dayjs](https://day.js.org/ "day.js")
-5. [React Hook Form](https://react-hook-form.com/get-started "React Hook Form")
-6. [joi](https://www.npmjs.com/package/joi "joi")
+1. Get the latest stable version [Node.js](https://nodejs.org/en/ "Node.js") (LTS). **Note:** npm will be installed automatically. Check the correctness of the installation: to do this, run in the command line (terminal):
 
-### Backend
-
-1. [Node.js](https://nodejs.org/en/ "Node.js")
-2. [Fastify](https://www.fastify.io/docs/v3.24.x/ "Fastify")
-3. [Knex](https://knexjs.org/ "Knex")
-4. [Objection](https://vincit.github.io/objection.js/ "Objection")
-5. [axios](https://www.npmjs.com/package/axios "axios")
-6. [bcrypt](https://www.npmjs.com/package/bcrypt "bcrypt")
-7. [Babel](https://babeljs.io/docs/en/index.html "Babel")
-8. [nodemon](https://www.npmjs.com/package/nodemon "nodemon")
-9. [dotenv](https://www.npmjs.com/package/dotenv "dotenv")
-10. [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken "jsonwebtoken")
-
-### Database
-
-1. [PostgreSQL](https://www.postgresql.org/download/ "PostgreSQL")
-
-## Установка
-
-1. Установить последнюю стабильную версию [Node.js](https://nodejs.org/en/ "Node.js") (LTS). **Note:** npm будет установлен автоматически. Проверьте корректность установки: для этого выполните в командной строке (терминале):
-
-    ```bash
-    node -v  // для проверки версии Node.js
-    npm -v // для проверки версии npm
     ```
+    node -v  // for checking Node.js version
+    npm -v // for checking npm version
 
-2. Установить последнюю стабильную версию [PostgreSQL](https://www.postgresql.org/download/ "PostgreSQL") для вашей OS. Проверьте корректность работы - попробуйте создать базу, таблицу, - для этого можете использовать [pgAdmin](https://www.pgadmin.org/ "pgAdmin") или другой удобный способ, который найдете.
+2. Install Git.
 
-3. Создайте в PostgreSQL **пустую** базу данных для проекта. Например, *thread*.
+3. Clone project`s [repo](https://github.com/BinaryStudioAcademy/thread-mobile):
 
-4. Установите Git.
-
-5. Склонировать [репозиторий](https://github.com/BinaryStudioAcademy/thread-mobile) проекта:
-
-    ```bash
+    ```
     git clone git@github.com:BinaryStudioAcademy/thread-mobile.git
     ```
 
-6. **Создать репозиторий на [Bitbucket](https://bitbucket.org/) и вести дальнейшую разработку там.**
+4. **Create a repo at [Bitbucket](https://bitbucket.org/) and carry out further development there.**
 
-### Корень проекта
-
-1. В руте проекта можно установить все зависимости одной командой:
-
-    ```bash
-      npm run install:all
+5. In the root of the project install all the dependencies:
+    ```
+      npm run install
     ```
 
-    Это установит зависимости для рутовой директории, frontend'а и backend'a. Можно установить для каждой папки отедьно (смотрите ниже).
-
-2. После установки пакетов, в руте проекта нужно запустить команду для [git-хуков](https://www.npmjs.com/package/simple-git-hooks):
-
-    ```bash
+6. After installing the packages, in the root of the project, you need to run the command to [git-hooks](https://www.npmjs.com/package/simple-git-hooks):
+    ```
       npx simple-git-hooks
     ```
 
-    **Теперь на каждый ваш коммит будет запускаться линтер и проверять ваш код.**
-
-### Backend
-
-1. В командной строке (терминале) зайдите в папку server:
-
-    ```bash
-    cd /* путь к папке server */
-    ```
-
-2. Установите все необходимы пакеты из package.json командой:
-
-    ```bash
-    npm install
-    ```
-
-3. В папке server создайте файл **.env** и скопируйте в него содержимое из файла **.env.example**.
-
-    **Note**: файл **.env** содержит реальные ключи проекта и не должен сохраняться в репозиторий.
-
-    Замените в файле **.env** значения ключей на действительные.
-    Для того, чтобы указать ключи для Gyazo Storage, необходимо зарегистрироваться на сайте [Gyazo](https://gyazo.com/captures) и [зарегистрировать приложение](https://gyazo.com/oauth/applications). Затем в **.env**  использовать `access token` из только что созданного приложения в Gyazo.
-
-4. Выполните [миграции](https://knexjs.org/#Migrations) и сиды для того, чтобы заполнить базу данных демо-данными. Для этого в командной строке (терминале) в папке server выполните:
-
-    ```bash
-    npm run migrate:run
-    npm run seed:run
-    ```
-
-    Проверьте базу данных на наличие демо-данных.
-
-5. Для запуска сервера в командной строке (терминале) в папке сервера выполните:
+7.  In the root of the project you need to run the command:
 
     ```bash
     npm start
     ```
 
-### Frontend
-
-1. Настройте окружение следуя [документации React Native](https://reactnative.dev/docs/environment-setup)
-
-2. В командной строке (терминале) зайдите в папку client:
+8. Open a new terminal and from the root folder run one of the following commands:
 
     ```bash
-    cd /* путь к папке client */
-    ```
-
-3. Установите все необходимы пакеты из package.json командой:
-
-    ```bash
-    npm install
-    ```
-
-4. В папке client создайте файлы **.env.android** и **.env.ios**, скопируйте в них содержимое из соответствующих файлов **.env.example**.
-
-    **Note**: файлы **.env** содержат реальные ключи проекта и не должны сохраняться в репозиторий.
-
-    Замените в файлах **.env** значения ключей на действительные.
-
-5. Для запуска клиента в командной строке (терминале) в папке клиента выполните:
-
-    ```bash
-    npx react-native start
-    ```
-
-    **Note**: в случае изменения .env файла при запуске команды нужно добавить флаг `--reset-cache`:
-
-    ```bash
-    npx react-native start --reset-cache
-    ```
-
-    Откройте новый терминал и из папки клиента запустите одну из следующих команд:
-
-    ```bash
-    npx react-native run-android
+    npm run-android
     ```
 
     ```bash
-    npx react-native run-ios
+    npm run-ios
     ```
 
-## Задания
+### Backend
 
-Необходимо добавить следующие возможности (возможно все реализовывать для одной из платформ Android или iOS):
-
-1. Поставить dislike посту.
-2. Обновить свой пост.
-3. Удалить свой пост.
-4. Фильтр - отображать только те посты, которым я (как пользователь) поставил лайк.
-5. Обновить собственный профиль. Добавить валидацию.
-6. Устанавливать статус пользователя (например, "А сегодня, в завтрашний день, не все могут смотреть. Вернее.."). Отображать его под username.
-7. Скачать изображение поста.
-8. Сбросить пароль (Forgot password). Отправить email с ссылкой на изменение пароля в приложении.
-9. Обновить свой комментарий.
-10. Удалить свой комментарий.
-11. Поставить like комментарию.
-12. Поставить dislike комментарию.
-13. Фильтр - не отображать свои посты, а отображать только чужие.
-14. Отправить пользователю email, если его посту поставили like.
+The backend must be taken from this repository [ThreadJS](https://github.com/BinaryStudioAcademy/thread-js). Instructions for launching and configuring can be found in the readme of this repository.
 
 ## PS
 
-Весь список тасков также можно найти на доске [**Trello**](https://trello.com/b/zWReSa2x "**Trello**") в колонке **To Do**. Доску нужно скопировать себе и по ней работать. Это поможет вам отслеживать весь процесс своей работы, а нам - определить, что уже готово. Таск будет считаться выполненным, если он полностью завершен и фича работает. Посмотрим на ее реализацию и оценим, правильно ли распределили логику в проекте. Это покажет, насколько вы разобрались в архитектуре. Также дадим комментарии по коду.
+Tasks can be completed for any of the Android or iOS platforms, when submitting a task, indicate which platform you used.
 
-Основной результат работы можно определить тем, как глубоко вы смогли разобраться в проекте и понять его, и как далеко продвинулись в личном обучении.
+The entire list of tasks can be found on the board [**Trello**](https://trello.com/b/zWReSa2x "**Trello**") in the column **To Do**. You need to copy the board for yourself and work on it. This will help you track the entire process of your work, and we will determine what is already ready. The task will be considered completed if it is fully completed and the feature works. Let's look at its implementation and evaluate whether the logic was distributed correctly in the project. This will show how much you understand the architecture. We will also comment on the code..
 
-Ссылки:
+The main result of the work can be determined by how deeply you were able to understand the project and understand it, and how far you have advanced in personal learning.
 
-1. [Репозиторий](https://github.com/BinaryStudioAcademy/thread-mobile).
+Links:
+
+1. [Repo](https://github.com/BinaryStudioAcademy/thread-mobile).
 2. [Trello](https://trello.com/b/zWReSa2x).
 
 ## FAQ:
 
-1. Какие фреймворки, библиотеки и их фичи можно использовать?
+1. What frameworks, libraries and their features can be used?
 
-    Полная свобода действий, используйте то, что считаете нужным.
+Complete freedom of action, feel free, use whatever you want.
 
-2. Можно ли изменять базу данных (добавлять колонки, таблицы)?
+2. Is it possible to change the database (add columns, tables)?
 
-    Можно, а в некоторых задачах даже нужно. Для этого вам необходимо создавать новые миграции. Существующие миграции изменять нельзя.
+It is possible, and in some tasks it is even necessary. To do this, you need to create new migrations. Existing migrations cannot be changed!!! Please do not forget it.
 
-3. Не устанавливается bcrypt
+3. Error: Expected linebreaks to be 'LF' but found 'CRLF'  linebreak-style
+You need to change the ```autocrlf``` setting to input or false in the Git settings.
 
-    Скорее всего, ему не хватает зависимостей на вашем компьютере. В документации bcrypt можно найти какие именно необходимы для вашей системы.
+```
+git config --global core.autocrlf false
+```
 
-4. Ошибка: Expected linebreaks to be 'LF' but found 'CRLF'  linebreak-style
+You may need to pull the project again.
 
-    Необходимо изменить параметр autocrlf на input либо false в настройках Git. Возможно, понадобится стянуть проект заново.
+4. When registering an application on the Gyazo website, you must provide ```Authorization callback URL```
 
-5. При регистрации приложения на сайте Gyazo требуется указать Authorization callback URL
-
-Укажите <https://www.google.com/>.
+Use https://www.google.com/.

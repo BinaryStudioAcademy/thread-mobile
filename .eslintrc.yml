@@ -1,8 +1,22 @@
 env:
   es6: true
+  browser: true
+
+extends:
+  - airbnb
 
 parserOptions:
   ecmaVersion: 2020
+  ecmaFeatures:
+    jsx: true
+  sourceType: module
+
+plugins:
+  - react
+
+settings:
+  react:
+    version: '17'
 
 rules:
   comma-dangle:
@@ -27,4 +41,34 @@ rules:
   no-param-reassign:
     - off
   import/prefer-default-export:
+    - off
+  arrow-body-style:
+    - off
+  import/no-default-export:
+    - error
+  spaced-comment:
+    - error
+    - always
+    - markers:
+        - '/'
+  import/no-unresolved:
+    - off
+  react/jsx-indent:
+    - error
+    - 2
+  react/jsx-indent-props:
+    - error
+    - 2
+  react/function-component-definition:
+    - 2
+    - namedComponents: arrow-function
+  react/react-in-jsx-scope:
+    - off
+  react/jsx-props-no-spreading:
+    - off
+  jsx-a11y/no-static-element-interactions:
+    - off
+  jsx-a11y/click-events-have-key-events:
+    - off
+  jsx-a11y/label-has-associated-control:
     - off
